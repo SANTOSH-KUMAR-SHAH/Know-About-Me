@@ -1,0 +1,18 @@
+.return-transition {
+  height: 50vh;
+  width: 100vw;
+  position: relative;
+  background-color: var(--color-white);
+  /* z-index slightly higher than white zone but lower than contact zone */
+  z-index: 3;
+}
+
+.black-wipe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: var(--color-black);
+  will-change: height;
+}

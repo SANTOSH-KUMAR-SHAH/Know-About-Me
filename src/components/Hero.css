@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════
+   HERO — Left-Aligned Diagonal Stack
+   Welcome (top center) → Sphere (center) → Name (bottom left)
+   ═══════════════════════════════════════════ */
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ── Video Background ── */
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(32, 30, 31, 0.3), var(--color-black));
+  z-index: 2;
+}
+
+/* ── Welcome Text (above sphere, centered) ── */
+.hero-welcome {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+}
+
+.welcome-text {
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  color: var(--color-gray-light);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+.welcome-highlight {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* ── Sphere Wrapper (center) ── */
+.hero-sphere-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: clamp(250px, 35vw, 450px);
+  height: clamp(250px, 35vw, 450px);
+}
+
+/* ── Name Block (bottom left perfectly aligned) ── */
+.hero-name-block {
+  position: absolute;
+  bottom: 8vh;
+  left: 6vw; /* Strong left alignment */
+  z-index: 10;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero-title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Perfect flush left vertical line */
+  margin: 0;
+  line-height: 0.85;
+}
+
+.hero-line {
+  display: block;
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-line-hii, .hero-line-iam {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--color-gray-light);
+  letter-spacing: 0em;
+}
+
+.hero-line-hii {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.hero-line-iam {
+  font-weight: 400;
+  margin-bottom: -10px; /* Pulls slightly tighter to Santosh */
+}
+
+.hero-line-name {
+  font-size: clamp(4.5rem, 14vw, 13rem);
+  color: var(--color-white);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 100px rgba(212, 175, 55, 0.2);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .hero-sphere-wrapper {
+    width: 60vw;
+    height: 60vw;
+    top: 40%;
+  }
+}
