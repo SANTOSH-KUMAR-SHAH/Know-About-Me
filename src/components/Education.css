@@ -1,8 +1,12 @@
 .education-section {
+  position: relative;
+  width: 100vw;
   padding: var(--space-xxl) 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  background-color: #fcfcf7;
+  color: var(--color-black);
 }
 
 .education-content {
@@ -44,7 +48,7 @@
 }
 
 .edu-power {
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
   font-weight: 700;
   font-family: var(--font-heading);
   letter-spacing: -0.02em;

@@ -1,8 +1,12 @@
 .skills-section {
+  position: relative;
+  width: 100vw;
   padding: var(--space-xxl) 0;
   min-height: 80vh;
   display: flex;
   align-items: center;
+  background-color: #fcfcf7;
+  color: var(--color-black);
 }
 
 .skills-grid {

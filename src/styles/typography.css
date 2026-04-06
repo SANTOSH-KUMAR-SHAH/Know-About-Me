@@ -20,21 +20,47 @@ body {
   font-family: var(--font-devanagari);
 }
 
+.charismatic-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-xl);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.charismatic-title::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: clamp(40px, 8vw, 100px);
+  background-color: var(--color-accent);
+}
+
+.charismatic-dark {
+  color: var(--color-black);
+}
+
 .text-huge {
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(2rem, 10vw, 8rem);
   text-transform: uppercase;
 }
 
 .text-hero {
-  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-size: clamp(2rem, 8vw, 6rem);
 }
 
 .text-title {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.5rem, 5vw, 4rem);
 }
 
 .text-subtitle {
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(1rem, 3vw, 2rem);
   font-weight: 400;
 }
 
@@ -44,7 +70,7 @@ body {
 
 /* Storytelling text block */
 .story-text {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.1rem, 4vw, 2.5rem);
   line-height: 1.4;
   letter-spacing: -0.01em;
   font-weight: 400;

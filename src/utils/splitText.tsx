@@ -6,32 +6,36 @@ import React from 'react';
  * GSAP targets the inner `.char` spans for y-translate reveals.
  */
 export const splitText = (text: string) => {
-  return text.split('').map((char, index) => {
-    if (char === ' ') {
-      return <span key={index} style={{ display: 'inline-block', width: '0.3em' }}>&nbsp;</span>;
-    }
-    return (
-      <span key={index} style={{ display: 'inline-block', overflow: 'hidden' }}>
-        <span style={{ display: 'inline-block' }} className="char">
-          {char}
-        </span>
+  return text.split(' ').map((word, wordIndex, array) => (
+    <React.Fragment key={wordIndex}>
+      <span style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+        {word.split('').map((char, charIndex) => (
+          <span key={charIndex} style={{ display: 'inline-block', overflow: 'hidden' }}>
+            <span style={{ display: 'inline-block' }} className="char">
+              {char}
+            </span>
+          </span>
+        ))}
       </span>
-    );
-  });
+      {wordIndex !== array.length - 1 && ' '}
+    </React.Fragment>
+  ));
 };
 
 /**
  * Split text into individually animated words.
  * Each word is wrapped in a mask (overflow:hidden) containing a movable inner span.
  * GSAP targets the inner `.word` spans for y-translate reveals.
- * More performant than character-level for long paragraphs.
  */
 export const splitWords = (text: string) => {
-  return text.split(' ').map((word, index) => (
-    <span key={index} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
-      <span style={{ display: 'inline-block' }} className="word">
-        {word}
+  return text.split(' ').map((word, index, array) => (
+    <React.Fragment key={index}>
+      <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom' }}>
+        <span style={{ display: 'inline-block' }} className="word">
+          {word}
+        </span>
       </span>
-    </span>
+      {index !== array.length - 1 && ' '}
+    </React.Fragment>
   ));
 };

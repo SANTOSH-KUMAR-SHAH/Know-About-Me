@@ -53,7 +53,8 @@ const Skills: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="skills-section container">
+    <section ref={sectionRef} className="skills-section container" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+      <h2 className="charismatic-title charismatic-dark" style={{ width: '100%', marginBottom: 'var(--space-xxl)' }}>THE TOOLS</h2>
       <div className="skills-grid">
         
         <div className="skill-column" ref={el => { columnsRef.current[0] = el; }}>

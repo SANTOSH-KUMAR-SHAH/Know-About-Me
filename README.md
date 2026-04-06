@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Santosh Kumar Shah — Cinematic Portfolio 2.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Portfolio](https://img.shields.io/badge/Live-santoshkumarshah.me-gold?style=for-the-badge&logo=vercel)](https://santoshkumarshah.me)
+[![Tech](https://img.shields.io/badge/Stack-React_19_|_GSAP_|_TS-black?style=for-the-badge&logo=react)](https://react.dev)
 
-Currently, two official plugins are available:
+> "I blend hardcore technical architecture with raw human emotion. I don't force solutions. I believe in the flow — अनुगच्छतु प्रवाहं."
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Welcome to the official repository of my cinematic developer portfolio. This is not just a website; it's an immersive scrollytelling experience designed to highlight the intersection of high-end software engineering and aesthetic storytelling.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Experience the Flow
+**Live Site:** [https://santoshkumarshah.me](https://santoshkumarshah.me)
 
-## Expanding the ESLint configuration
+## ✨ Core Features
+- 🎬 **Cinematic Scrollytelling**: Powered by **GSAP** and **ScrollTrigger** for deep-layered narrative movement.
+- 🔊 **Sound Design**: Immersive UI micro-interactions using synthesized **Web Audio API** (no external audio assets).
+- 🧬 **Kinetic Typography**: Custom `splitText` utilities for word-by-word responsive reveals.
+- 🏆 **High-End UI**: Minimalist, brutalist design language with a focus on editorial typography (Sora, Cormorant Garamond).
+- 📐 **Mobile Precision**: Fully responsive choreography that maintains award-level quality across all devices.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Tech Stack
+- **Framework**: [React 19](https://react.dev/) (Hooks-driven architecture)
+- **Animation**: [GSAP](https://greensock.com/gsap/) (Advanced timeline management)
+- **Styling**: Vanilla CSS (CSS Variables & Modern Flex/Grid)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict type safety)
+- **Build Tool**: [Vite](https://vitejs.dev/) (Ultra-fast development)
+- **Scrolling**: [Lenis](https://lenis.darkroom.engineering/) (Buttery smooth high-performance scroll)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 Repository Structure
+```text
+src/
+├── assets/         # High-resolution media resources
+├── components/     # Atomic component architecture
+├── hooks/          # Custom hooks (useSoundEffects, useLenis, etc.)
+├── styles/         # Global design system & typography tokens
+└── utils/          # Kinetic text & math utilities
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📜 Personal Philosophy
+In my work, I follow the concept of **अनुगच्छतु प्रवाहं** (Go with the Flow). I believe that when code is written with clarity and intuition, it stops being a tool and starts being an art form.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📧 Contact & Networking
+- **Email**: [santoshkumarshah266@gmail.com](mailto:santoshkumarshah266@gmail.com)
+- **LinkedIn**: [Santosh Kumar Shah](https://www.linkedin.com/in/santosh-kumar-shah-9250503a4/)
+- **GitHub**: [@SANTOSH-KUMAR-SHAH](https://github.com/SANTOSH-KUMAR-SHAH)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+© 2026 Santosh Kumar Shah. Built with passion and grit.

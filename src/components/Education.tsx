@@ -41,6 +41,7 @@ const Education: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="education-section container">
+      <h2 className="charismatic-title charismatic-dark" style={{ width: '100%', marginBottom: 'var(--space-xxl)' }}>THE JOURNEY</h2>
       <div className="education-content">
         {CONTENT.education.story.map((line, index) => {
           let className = "edu-story-text";

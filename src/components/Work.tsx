@@ -9,55 +9,54 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Work: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const infoRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
-      // Subtitle slides in from left
-      gsap.fromTo(subtitleRef.current,
-        { x: -80, opacity: 0 },
-        {
-          x: 0, opacity: 1,
-          duration: 1.2, ease: "power3.out",
-          scrollTrigger: { trigger: subtitleRef.current, start: "top 85%" }
-        }
-      );
-
-      // Case study info slides in from left with depth
-      gsap.fromTo(infoRef.current,
-        { x: -100, opacity: 0 },
-        {
-          x: 0, opacity: 1,
-          duration: 1.4, ease: "power3.out",
-          scrollTrigger: { trigger: infoRef.current, start: "top 80%" }
-        }
-      );
-
-      // Case study visual slides in from right (opposing direction = depth)
+      
+      // Cinematic clip-path reveal of the video (expands from a constrained polygon)
       gsap.fromTo(visualRef.current,
-        { x: 100, opacity: 0 },
+        { scale: 1.05, clipPath: "polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%)" },
         {
-          x: 0, opacity: 1,
-          duration: 1.4, ease: "power3.out",
-          scrollTrigger: { trigger: visualRef.current, start: "top 80%" }
+          scale: 1, 
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "center center",
+            scrub: 1
+          }
         }
       );
 
-      // Image parallax — moves slower than scroll for depth illusion
-      gsap.fromTo(imageRef.current,
-        { y: -50 },
+      // Giant structural title floats upwards aggressively
+      gsap.fromTo(titleRef.current,
+        { y: 150 },
         {
-          y: 50,
+          y: -150,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: true
+            scrub: 1
+          }
+        }
+      );
+
+      // Glassmorphism card floats up gently
+      gsap.fromTo(infoRef.current,
+        { y: 100, opacity: 0 },
+        {
+          y: 0, opacity: 1,
+          ease: "power3.out",
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: infoRef.current,
+            start: "top 85%"
           }
         }
       );
@@ -68,40 +67,45 @@ const Work: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="work-section container">
-      <div className="work-header">
-        <p ref={subtitleRef} className="work-subtitle text-body">
-          I've built a dozen projects 10X better. But this one started everything.
-        </p>
+    <section ref={sectionRef} className="work-section" style={{ flexDirection: 'column', justifyContent: 'center' }}>
+      <div style={{ width: '90vw', maxWidth: '1600px', marginBottom: 'var(--space-md)' }}>
+        <h2 className="charismatic-title charismatic-dark">THE WORK</h2>
       </div>
+      <div className="work-center-container">
+        
+        {/* Massive Video Background */}
+        <div ref={visualRef} className="work-massive-visual">
+          <video autoPlay loop muted playsInline className="work-video">
+            <source src={workVid} type="video/mp4" />
+          </video>
+          <div className="work-video-overlay"></div>
+        </div>
 
-      <div className="case-study">
-        <div ref={infoRef} className="case-study-info">
-          <h3 className="text-title">School Portal Rebuild</h3>
-          <ul className="stats-list">
-            <li><strong>Scale:</strong> Thousands of students</li>
-            <li><strong>Timeline:</strong> 3 months</li>
-            <li><strong>Team:</strong> 1 developer</li>
-          </ul>
+        {/* Floating Glassmorphism Info Card */}
+        <div ref={infoRef} className="work-floating-info">
+          <h4 className="info-overline" style={{fontFamily: 'var(--font-editorial)', fontStyle: 'italic'}}>CASE STUDY 01</h4>
           <p className="case-description text-body">
-            The previous system was broken. Loading screens that never ended. Links that went nowhere. I stripped it down to the studs and rebuilt it with modern architecture. Now it's the fastest portal in the country.
+            The previous system was broken. Loading screens that never ended. I stripped it down to the studs and rebuilt it with modern architecture. Now it's the fastest portal in the country.
           </p>
+          <ul className="stats-list">
+            <li><span>Scale</span> Thousands of students</li>
+            <li><span>Timeline</span> 3 months</li>
+          </ul>
           <div className="case-links">
             <MagneticHover>
-              <a href="https://santosh-kumar-shah.github.io/Viswa-Niketan/" target="_blank" rel="noopener noreferrer" className="case-link hover-target">View Live Portal</a>
+              <a href="https://santosh-kumar-shah.github.io/Viswa-Niketan/" target="_blank" rel="noopener noreferrer" className="case-link hover-target">Live Portal</a>
             </MagneticHover>
             <MagneticHover>
-              <a href="https://github.com/SANTOSH-KUMAR-SHAH/Viswa-Niketan.git" target="_blank" rel="noopener noreferrer" className="case-link hover-target">Source Code</a>
+              <a href="https://github.com/SANTOSH-KUMAR-SHAH/Viswa-Niketan.git" target="_blank" rel="noopener noreferrer" className="case-link hover-target">Source</a>
             </MagneticHover>
           </div>
         </div>
-        <div ref={visualRef} className="case-study-visual">
-          <div ref={imageRef} className="case-video-wrapper">
-            <video autoPlay loop muted playsInline className="case-video">
-              <source src={workVid} type="video/mp4" />
-            </video>
-          </div>
-        </div>
+
+        {/* Giant Project Title Overlapping Everything */}
+        <h3 ref={titleRef} className="work-giant-title">
+          SCHOOL<br/>PORTAL
+        </h3>
+
       </div>
     </section>
   );

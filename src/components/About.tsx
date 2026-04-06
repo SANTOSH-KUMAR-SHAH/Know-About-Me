@@ -61,7 +61,8 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="about-section container">
+    <section ref={sectionRef} className="about-section container" style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start' }}>
+      <h2 className="charismatic-title" style={{ width: '100%' }}>THE STORY</h2>
       <div className="about-grid">
         <div className="about-image-column">
           <div className="portrait-wrapper">

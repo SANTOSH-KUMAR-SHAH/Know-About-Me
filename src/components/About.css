@@ -95,7 +95,7 @@
 
 .text-age {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.2rem, 8vw, 6rem);
   font-weight: 700;
   text-align: center;
   margin: var(--space-xl) 0;
@@ -103,6 +103,8 @@
 }
 
 .text-philosophy {
+  font-family: var(--font-editorial);
+  font-style: italic;
   font-size: clamp(2rem, 4vw, 3rem);
   opacity: 0.9;
 }
@@ -125,7 +127,7 @@
 
 .text-bold {
   font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
   opacity: 1;
   font-family: var(--font-heading);
   letter-spacing: -0.02em;

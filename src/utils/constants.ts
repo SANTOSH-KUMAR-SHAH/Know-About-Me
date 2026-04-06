@@ -7,14 +7,14 @@ export const CONTENT = {
   },
   about: {
     story: [
-      "I don't study systems.",
-      "I break them apart and rebuild them better.",
-      "My school's website was broken. Thousands of students, struggling to find their results. Loading screens that never ended. Links that went nowhere.",
-      "I spent 3 months rebuilding everything from scratch.",
-      "Now it's the fastest school portal in Nepal.",
-      "I was 17.",
-      "I don't believe in following others. I believe in the flow — अनुगच्छतु प्रवाहं. Some call it instinct. Some call it stubbornness. I call it clarity.",
-      "I make complex things simple. That's not a skill. That's who I am.",
+      "Ready to explore my life?? Hmm... I am a frontend developer who refuses to be boxed into bring on theoritical Knowledge.",
+      "My journey didn't start in a traditional classroom. It started with an obsession for breaking things apart and figuring out how they work.",
+      "I blend hardcore technical architecture with raw human emotion. I write poetry. I study philosophy. I design experiences.",
+      "I don't force solutions. I believe in the flow — अनुगच्छतु प्रवाहं. When you align your mind with the problem, the code writes itself.",
+      "I don't just talk. I have rebuilt my entire college's digital infrastructure from the ground up.",
+      "I was just 17 When i made it.",
+      "(Just keep scrolling. You'll see it in a second.)",
+      "I make complex things simple. That's not a skill. That's who I am."
     ]
   },
   skills: {
@@ -40,5 +40,5 @@ export const CONTENT = {
     { name: 'GitHub', url: 'https://github.com/SANTOSH-KUMAR-SHAH' },
     { name: 'WhatsApp', url: 'https://wa.me/9779845067005' },
   ],
-  email: 'hello@santoshkumar.com'
+  email: 'santoshkumarshah266@gmail.com'
 };

@@ -64,7 +64,7 @@
 /* ── Sphere Wrapper (center) ── */
 .hero-sphere-wrapper {
   position: absolute;
-  top: 50%;
+  top: 45%; /* Moved up slightly to avoid touching name typography */
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
@@ -99,14 +99,15 @@
 }
 
 .hero-line-hii, .hero-line-iam {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(1.8rem, 8vw, 5rem);
   color: var(--color-gray-light);
   letter-spacing: 0em;
 }
 
 .hero-line-hii {
+  font-family: var(--font-editorial);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .hero-line-iam {
@@ -115,7 +116,7 @@
 }
 
 .hero-line-name {
-  font-size: clamp(4.5rem, 14vw, 13rem);
+  font-size: clamp(3rem, 15vw, 13rem);
   color: var(--color-white);
   font-weight: 900;
   letter-spacing: -0.03em;
