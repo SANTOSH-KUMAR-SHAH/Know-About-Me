@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CONTENT } from '../utils/constants';
 import { useSoundEffects } from '../hooks/useSoundEffects';
-import './TransitionZone.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,13 +79,13 @@ const TransitionZone: React.FC = () => {
       {/* The explanation that appears after the Devanagari dissolves */}
       <div ref={explanationRef} className="transition-explanation">
         <p className="explanation-text">
-          Follow the flow. I don't believe in fighting against the current.
+          Most people fight the current. They push. They force. They burn out.
         </p>
         <p className="explanation-text">
-          When something feels right — a problem, a project, a path — I follow it completely. No hesitation. No second-guessing.
+          I learned something different. When you stop resisting and start listening — to the problem, to the code, to the silence between the lines — the answer finds you.
         </p>
         <p className="explanation-closing">
-          This isn't luck. It's clarity.
+          That's not a philosophy. That's a weapon.
         </p>
       </div>
     </div>

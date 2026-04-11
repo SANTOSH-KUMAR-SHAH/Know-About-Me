@@ -1,6 +1,9 @@
-/* Typography tokens and scale */
-
-h1, h2, h3, h4, h5, h6 {
+.portfolio-root h1,
+.portfolio-root h2,
+.portfolio-root h3,
+.portfolio-root h4,
+.portfolio-root h5,
+.portfolio-root h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
   margin: 0;
@@ -8,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-body {
+.portfolio-root {
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.6;
@@ -68,7 +71,6 @@ body {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
 }
 
-/* Storytelling text block */
 .story-text {
   font-size: clamp(1.1rem, 4vw, 2.5rem);
   line-height: 1.4;

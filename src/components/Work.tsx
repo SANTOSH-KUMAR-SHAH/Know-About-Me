@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MagneticHover } from './MagneticHover';
-import './Work.css';
 import workVid from '../assets/work.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -70,6 +69,7 @@ const Work: React.FC = () => {
     <section ref={sectionRef} className="work-section" style={{ flexDirection: 'column', justifyContent: 'center' }}>
       <div style={{ width: '90vw', maxWidth: '1600px', marginBottom: 'var(--space-md)' }}>
         <h2 className="charismatic-title charismatic-dark">THE WORK</h2>
+        <p className="work-intro-line">I've built dozens of projects. But every empire starts with one.</p>
       </div>
       <div className="work-center-container">
         
@@ -85,20 +85,22 @@ const Work: React.FC = () => {
         <div ref={infoRef} className="work-floating-info">
           <h4 className="info-overline" style={{fontFamily: 'var(--font-editorial)', fontStyle: 'italic'}}>CASE STUDY 01</h4>
           <p className="case-description text-body">
-            The previous system was broken. Loading screens that never ended. I stripped it down to the studs and rebuilt it with modern architecture. Now it's the fastest portal in the country.
+            I looked at my college's digital infrastructure and knew I could build something better. So I did — every page, every system, from scratch. The college already had a website. They refused to replace it with mine. That's fine. I preserved it. Because quality doesn't need permission. It just needs time.
           </p>
           <ul className="stats-list">
-            <li><span>Scale</span> Thousands of students</li>
-            <li><span>Timeline</span> 3 months</li>
+            <li><span>Built at</span> 17 years old</li>
+            <li><span>Scope</span> Solo — designed, developed, shipped</li>
+            <li><span>Status</span> Preserved — waiting for its moment</li>
           </ul>
           <div className="case-links">
             <MagneticHover>
-              <a href="https://santosh-kumar-shah.github.io/Viswa-Niketan/" target="_blank" rel="noopener noreferrer" className="case-link hover-target">Live Portal</a>
+              <a href="https://santosh-kumar-shah.github.io/Viswa-Niketan/" target="_blank" rel="noopener noreferrer" className="case-link hover-target">View Project</a>
             </MagneticHover>
             <MagneticHover>
               <a href="https://github.com/SANTOSH-KUMAR-SHAH/Viswa-Niketan.git" target="_blank" rel="noopener noreferrer" className="case-link hover-target">Source</a>
             </MagneticHover>
           </div>
+          <p className="work-more-teaser">More projects. Coming soon.</p>
         </div>
 
         {/* Giant Project Title Overlapping Everything */}

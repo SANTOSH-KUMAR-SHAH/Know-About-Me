@@ -5,7 +5,7 @@
   --color-gray-dark: #A39E93;
   --color-gray-light: #d3ccc3;
   --color-accent: #D4AF37;
-  
+
   /* Fonts */
   --font-heading: 'Sora', sans-serif;
   --font-body: 'Alegreya', serif;
@@ -18,11 +18,11 @@
   --space-lg: 2rem;
   --space-xl: 4rem;
   --space-xxl: 8rem;
-  
+
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.25, 1, 0.5, 1);
   --transition-smooth: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  
+
   /* Layout */
   --max-width: 1400px;
   --container-padding: 5vw;

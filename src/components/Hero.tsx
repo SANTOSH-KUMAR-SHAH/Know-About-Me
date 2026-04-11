@@ -1,8 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { splitText } from '../utils/splitText';
-import { GoldenSphere } from './GoldenSphere';
-import './Hero.css';
 import vidPath from '../assets/web.mp4';
 
 const Hero: React.FC = () => {
@@ -55,20 +53,17 @@ const Hero: React.FC = () => {
       {/* Welcome text — character split for kinetic reveal */}
       <div ref={welcomeRef} className="hero-welcome">
         <p className="welcome-text">
-          {splitText("Welcome to the world of a ")}
-          <span className="welcome-highlight">{splitText("developer")}</span>
+          {splitText("Welcome to the world of ")}
+          <span className="welcome-highlight">{splitText("obsession")}</span>
         </p>
       </div>
 
-      {/* Golden Sphere — center */}
-      <div className="hero-sphere-wrapper">
-        <GoldenSphere />
-      </div>
+
 
       {/* Name — each line character-split for cascading reveal */}
       <div className="hero-name-block">
         <h1 ref={nameRef} className="hero-title">
-          <span className="hero-line hero-line-hii">{splitText("Hii")}</span>
+          <span className="hero-line hero-line-hii">{splitText("Hi")}</span>
           <span className="hero-line hero-line-iam">{splitText("I am")}</span>
           <span className="hero-line hero-line-name">{splitText("Santosh")}</span>
         </h1>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLenis } from './hooks/useLenis';
 import { CustomCursor } from './components/CustomCursor';
 import Preloader from './components/Preloader';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import TransitionZone from './components/TransitionZone';
@@ -25,6 +26,8 @@ function App() {
         <Preloader onComplete={() => setLoading(false)} />
       ) : (
         <main className="app-container">
+          <Navbar />
+          
           {/* Black Zone */}
           <div className="zone-black">
             <Hero />

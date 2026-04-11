@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { CONTENT } from '../utils/constants';
-import './Preloader.css';
 
 interface PreloaderProps {
   onComplete: () => void;
