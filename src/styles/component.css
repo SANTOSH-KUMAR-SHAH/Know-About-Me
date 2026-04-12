@@ -127,9 +127,9 @@
   letter-spacing: -0.03em;
 }
 @media (max-width: 768px) {
-  .hero-line-name { font-size: clamp(2.5rem, 13.5vw, 6rem); }
-  .hero-name-block { left: 5vw; bottom: 6vh; }
-  .welcome-text { font-size: clamp(0.85rem, 3vw, 1rem); padding-top: 8vh; padding-left: 5vw; padding-right: 5vw; line-height: 1.8; }
+  .hero-line-name { font-size: clamp(2rem, 10.5vw, 5rem); }
+  .hero-name-block { left: 4vw; bottom: 5vh; }
+  .welcome-text { font-size: clamp(0.75rem, 3vw, 1rem); padding-top: 8vh; padding-left: 5vw; padding-right: 5vw; line-height: 1.8; }
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -1071,4 +1071,5 @@
 @media (max-width: 768px) {
   .site-navbar { padding: 1.5rem var(--container-padding); }
   .navbar-status { display: none; }
+  .navbar-logo { font-size: 0.85rem; letter-spacing: 0.15em; }
 }
