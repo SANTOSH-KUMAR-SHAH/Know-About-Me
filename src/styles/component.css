@@ -128,7 +128,7 @@
 }
 @media (max-width: 768px) {
   .hero-line-name { font-size: clamp(2rem, 10.5vw, 5rem); }
-  .hero-name-block { left: 4vw; bottom: 5vh; }
+  .hero-name-block { left: 4vw; bottom: 15vh; }
   .welcome-text { font-size: clamp(0.75rem, 3vw, 1rem); padding-top: 8vh; padding-left: 5vw; padding-right: 5vw; line-height: 1.8; }
 }
 
@@ -218,6 +218,8 @@
   line-height: 1.7;
   color: rgba(255,255,255,0.7);
   max-width: 520px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .about-para em {
@@ -681,6 +683,8 @@
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   line-height: 1.7;
   color: rgba(32,30,31,0.7);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .edu-text em {
