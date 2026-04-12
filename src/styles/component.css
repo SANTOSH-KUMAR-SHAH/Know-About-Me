@@ -307,55 +307,54 @@
   .about-story-scroll { padding: 10vh var(--container-padding); }
 }
 
-/* ===== TRANSITION ZONE ===== */
-.transition-zone {
-  height: 100vh; width: 100vw;
+/* ===== TRANSITION ZONE WEBGL ===== */
+.transition-zone-webgl {
   position: relative;
-  background-color: var(--color-black);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fcfcf7; /* Matches the Education section underneath */
+}
+.transition-light-layer {
+  position: absolute;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  z-index: 5;
+  background-color: transparent;
+  z-index: 1;
 }
-.ink-blob {
+.transition-canvas {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  width: 20px; height: 20px;
-  background-color: var(--color-white);
-  border-radius: 50%;
-  will-change: transform;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 2;
 }
-.transition-text {
-  position: absolute;
-  z-index: 10;
+.transition-text-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-  opacity: 0;
-  pointer-events: none;
+  text-align: center;
+  gap: 1rem;
+  max-width: 600px;
+  padding: 0 var(--container-padding);
 }
-.transition-text .font-devanagari {
+.transition-text-stack .font-devanagari {
   font-size: clamp(3rem, 8vw, 6rem);
   color: var(--color-black);
-  text-align: center;
 }
-.transition-translation {
+.transition-text-stack .transition-translation {
   font-size: clamp(0.8rem, 1.2vw, 1rem);
   text-transform: uppercase;
   letter-spacing: 0.3em;
   color: var(--color-gray-dark);
   font-weight: 300;
 }
-.transition-explanation {
+.transition-explanation-webgl {
   position: absolute;
-  z-index: 10;
   max-width: 650px;
   text-align: center;
-  opacity: 0;
-  pointer-events: none;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -371,13 +370,12 @@
   letter-spacing: 0.02em;
 }
 .explanation-closing {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
   font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--color-black);
   letter-spacing: -0.02em;
-  margin-top: 0.5rem;
+  line-height: 1.2;
 }
+.mt-4 { margin-top: 2rem; };
 
 /* ===== WORK ===== */
 .work-section {
@@ -448,18 +446,19 @@
   font-family: var(--font-heading);
   font-size: clamp(5rem, 11vw, 12rem);
   font-weight: 800; line-height: 0.85;
-  color: var(--color-white);
+  color: var(--color-accent); /* Psychologically premium aesthetic */
   text-transform: uppercase;
   z-index: 20;
-  mix-blend-mode: difference;
+  mix-blend-mode: normal;
   pointer-events: none;
+  text-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 @media (max-width: 900px) {
   .work-section { min-height: auto; padding: 15vh 0; }
   .work-center-container { display: flex; flex-direction: column; height: auto; }
   .work-massive-visual { position: relative; width: 100%; height: 50vh; border-radius: 0; }
   .work-floating-info { position: relative; top: -60px; left: 0; transform: none; width: 90%; margin: 0 auto; }
-  .work-giant-title { position: relative; bottom: 0; left: 0; margin-top: -20px; padding: 0 5%; font-size: clamp(4rem, 15vw, 10rem); mix-blend-mode: normal; }
+  .work-giant-title { position: absolute; bottom: 20%; left: 0%; transform: rotate(-5deg); z-index: 40; font-size: clamp(4rem, 15vw, 10rem); color: var(--color-accent); }
 }
 
 /* ===== SKILLS V2 (CSS marquee) ===== */
