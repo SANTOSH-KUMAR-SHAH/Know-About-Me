@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const portraitUrl = 'https://raw.githubusercontent.com/SANTOSH-KUMAR-SHAH/MY-Portfolio/main/src/assets/portrait.jpg';
+import portraitUrl from '../assets/portrait.jpg';
 
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
