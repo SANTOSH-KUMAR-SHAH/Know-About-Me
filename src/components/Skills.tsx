@@ -65,7 +65,7 @@ const Skills: React.FC = () => {
 
       <div className="skills-rows">
         {rows.map((row, i) => (
-          <div className="skills-row-block" key={i} ref={el => rowsRef.current[i] = el}>
+          <div className="skills-row-block" key={i} ref={el => { rowsRef.current[i] = el; }}>
             <div className="skills-row-label-wrap">
               <span className="skills-row-label">{row.label}</span>
               <span className="skills-row-count">0{i + 1}</span>
