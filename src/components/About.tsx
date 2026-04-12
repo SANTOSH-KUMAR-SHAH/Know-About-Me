@@ -32,7 +32,7 @@ const About: React.FC = () => {
       {/* LEFT — Pinned Photo */}
       <div className="about-photo-col">
         <div className="about-photo-frame">
-          <img src={portraitUrl} alt="Santosh" className="about-photo" />
+          <img src={portraitUrl} alt="Santosh Kumar Shah — Award-Winning Creative Developer in Kathmandu, Nepal" className="about-photo" />
           <div className="about-photo-gradient" />
         </div>
       </div>
