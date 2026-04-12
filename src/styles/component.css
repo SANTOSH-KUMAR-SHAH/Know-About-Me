@@ -127,7 +127,7 @@
   letter-spacing: -0.03em;
 }
 @media (max-width: 768px) {
-  .hero-line-name { font-size: clamp(4rem, 18vw, 8rem); line-height: 0.9; }
+  .hero-line-name { font-size: clamp(4rem, 18vw, 8rem); line-height: 1; margin-top: 15px; }
   .hero-name-block { left: 4vw; bottom: 25vh; }
   .welcome-text { font-size: clamp(0.75rem, 3vw, 1rem); padding-top: 8vh; padding-left: 5vw; padding-right: 5vw; line-height: 1.8; }
 }
@@ -159,7 +159,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   filter: grayscale(1) contrast(1.15);
   transition: filter 0.6s ease;
 }
@@ -171,11 +171,9 @@
 .about-photo-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    transparent 60%,
-    var(--color-black) 100%
-  );
+  background: 
+    linear-gradient(to right, transparent 60%, var(--color-black) 100%),
+    linear-gradient(to bottom, var(--color-black) 0%, transparent 15%, transparent 85%, var(--color-black) 100%);
   pointer-events: none;
 }
 
@@ -301,11 +299,12 @@
 
 @media (max-width: 768px) {
   .about-section { grid-template-columns: 1fr; }
-  .about-photo-frame { position: relative; height: 60vh; }
+  .about-photo-frame { position: relative; height: 75vh; }
+  .about-photo { object-position: center; }
   .about-photo-gradient {
-    background: linear-gradient(to bottom, transparent 50%, var(--color-black) 100%);
+    background: linear-gradient(to bottom, var(--color-black) 0%, transparent 15%, transparent 70%, var(--color-black) 100%);
   }
-  .about-story-scroll { padding: 15vh var(--container-padding); }
+  .about-story-scroll { padding: 10vh var(--container-padding); }
 }
 
 /* ===== TRANSITION ZONE ===== */
