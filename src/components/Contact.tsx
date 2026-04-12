@@ -63,15 +63,22 @@ const Contact: React.FC = () => {
       </div>
 
       <div className="contact-email-wrap" ref={emailRef}>
-        <a className="contact-email-giant" href={`mailto:${CONTENT.email}`}>
-          {CONTENT.email}
+        <a 
+          className="contact-email-giant" 
+          href="#" 
+          onClick={(e) => { 
+            e.preventDefault(); 
+            window.location.href = `mailto:${CONTENT.emailUser}@${CONTENT.emailDomain}`; 
+          }}
+        >
+          {`${CONTENT.emailUser}@${CONTENT.emailDomain}`}
         </a>
         <span className="contact-email-arrow">↗</span>
       </div>
 
       <div className="contact-socials" ref={socialsRef}>
         {CONTENT.socials.map((social, i) => (
-          <a key={i} className="contact-social-item" href={social.url} target="_blank" rel="noreferrer">
+          <a key={i} className="contact-social-item" href={social.url} target="_blank" rel="noopener noreferrer">
             <span className="contact-social-num">0{i + 1}</span>
             <span className="contact-social-name">{social.name}</span>
             <span className="contact-social-arrow">↗</span>

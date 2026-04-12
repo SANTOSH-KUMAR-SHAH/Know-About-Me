@@ -40,5 +40,6 @@ export const CONTENT = {
     { name: 'GitHub', url: 'https://github.com/SANTOSH-KUMAR-SHAH' },
     { name: 'WhatsApp', url: 'https://wa.me/9779845067005' },
   ],
-  email: 'santoshkumarshah266@gmail.com'
+  emailUser: 'santoshkumarshah266',
+  emailDomain: 'gmail.com'
 };

@@ -82,12 +82,12 @@ const Education: React.FC = () => {
         <div className="edu-line-break edu-reveal" />
 
         <p className="edu-text edu-reveal">
-          While my classmates sat in rows absorbing theory they'd forget by next semester,
+          While my classmates sat in rows absorbing   theory they'd forget by next semester,
           I was doing something different. I was <em>building.</em>
         </p>
 
         <p className="edu-text edu-reveal">
-          Not because someone assigned me to. Not because a syllabus told me to.
+          Not  because someone assigned me to. Not because a syllabus told me to.
           Because the moment I opened a code editor, something clicked that no classroom
           ever triggered.
         </p>
