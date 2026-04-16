@@ -51,3 +51,8 @@ npm run dev
 
 *This is the starting point. Quality doesn't need permission. It just needs time.*
 **© 2026 SANTOSH KUMAR SHAH**
+
+
+Go and see by yourself
+👇
+santoshkumarshah.me
