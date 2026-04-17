@@ -9,6 +9,7 @@ import TransitionZone from './components/TransitionZone';
 import Work from './components/Work';
 import Skills from './components/Skills';
 import Education from './components/Education';
+import SEOContent from './components/SEOContent';
 import Contact from './components/Contact';
 import ReturnTransition from './components/ReturnTransition';
 import './App.css';
@@ -49,6 +50,7 @@ function App() {
 
           {/* Final Black Zone */}
           <div className="zone-black">
+            <SEOContent />
             <Contact />
           </div>
         </main>

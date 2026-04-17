@@ -5,7 +5,7 @@ import vidPath from '../assets/web.mp4';
 
 const Hero: React.FC = () => {
   const welcomeRef = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLHeadingElement>(null);
+  const nameRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 });
@@ -60,13 +60,18 @@ const Hero: React.FC = () => {
 
 
 
+      {/* Visually Hidden SEO Header for Google Ranking */}
+      <h1 className="sr-only">
+        Santosh Kumar Shah (SKS) — Best Award-Winning Creative Developer Portfolio Website in Nepal | UI Architect Kathmandu
+      </h1>
+
       {/* Name — each line character-split for cascading reveal */}
       <div className="hero-name-block">
-        <h1 ref={nameRef} className="hero-title">
+        <div ref={nameRef} className="hero-title">
           <span className="hero-line hero-line-hii">{splitText("Hi")}</span>
           <span className="hero-line hero-line-iam">{splitText("I am")}</span>
           <span className="hero-line hero-line-name">{splitText("Santosh")}</span>
-        </h1>
+        </div>
       </div>
     </section>
   );

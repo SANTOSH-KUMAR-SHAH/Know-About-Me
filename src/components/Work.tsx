@@ -26,7 +26,7 @@ const Work: React.FC = () => {
             trigger: sectionRef.current,
             start: "top 80%",
             end: "center center",
-            scrub: 1
+            scrub: true
           }
         }
       );

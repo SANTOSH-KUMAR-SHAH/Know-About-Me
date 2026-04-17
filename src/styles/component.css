@@ -403,6 +403,7 @@
   overflow: hidden;
   box-shadow: 0 40px 80px rgba(0,0,0,0.8);
   z-index: 5;
+  will-change: clip-path, transform;
 }
 .work-video { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); }
 .work-video-overlay {
@@ -1070,3 +1071,35 @@
   .navbar-status { display: flex; flex-direction: column; align-items: flex-end; font-size: 0.65rem; }
   .navbar-logo { font-size: 0.85rem; letter-spacing: 0.15em; }
 }
+
+/* ===== SEO & ACCESSIBILITY UTILITIES ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* SEO Manifesto footer — designed to be invisible to users but gold for Google crawler bots */
+.seo-manifesto {
+  background-color: var(--color-black);
+  padding: 5vh var(--container-padding);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.seo-text {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.1); /* Extremely subtle contrast */
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.seo-text strong { color: rgba(255,255,255,0.15); }
+
