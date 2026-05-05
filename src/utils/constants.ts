@@ -29,7 +29,7 @@ export const CONTENT = {
       "Theory bored me. But the moment I touched code — I couldn't stop.",
       "While others memorized formulas, I was studying how systems work. Reading about hardware. Writing poetry. Exploring philosophy. Building things that actually mattered.",
       "I'm not the jack of all trades.",
-      "I'm the master of all trades.",
+      "I'm the master of some trades.",
       "While everyone else is still sitting in classrooms, learning the theory of how to build things — I've already built them. They're preparing for the ability. I already have it.",
       "School taught me one thing: the real education happens when you close the textbook."
     ]

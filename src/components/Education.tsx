@@ -76,7 +76,7 @@ const Education: React.FC = () => {
         </p>
 
         <p className="edu-text-accent edu-reveal">
-          But you're not most people, are you?
+          You're still here. Most already gave up. You're rare.
         </p>
 
         <div className="edu-line-break edu-reveal" />
@@ -126,7 +126,7 @@ const Education: React.FC = () => {
       <div className="edu-master-section">
         <div className="edu-master-content">
           <span className="edu-master-pre">not the jack — but I am the</span>
-          <h3 className="edu-master-huge">MASTER<br />OF ALL<br />TRADES.</h3>
+          <h3 className="edu-master-huge">MASTER<br />OF SOME<br />TRADES.</h3>
         </div>
       </div>
 

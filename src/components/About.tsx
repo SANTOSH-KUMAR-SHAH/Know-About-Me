@@ -54,10 +54,7 @@ const About: React.FC = () => {
 
         {/* BUILDING THE WORLD */}
         <p className="about-para about-line">
-          While my classmates were memorizing formulas for tomorrow's exam,
-          I was reading poetry. Not because I had to. Because the rhythm of words
-          taught me something textbooks never could — <em>how to feel a problem
-          before solving it.</em>
+          I’ve always walked the line between technology and the liberal arts. While others were memorizing formulas, I was reading poetry—searching for the intersection where beauty meets logic. It taught me something no textbook could: <em>how to feel a problem before you ever touch the code.</em>
         </p>
 
         <p className="about-para about-line">
@@ -132,11 +129,6 @@ const About: React.FC = () => {
 
         <div className="about-divider about-line" />
 
-        {/* THE PHILOSOPHY */}
-        <div className="about-philosophy about-line">
-          <span className="about-sanskrit">अनुगच्छतु प्रवाहं</span>
-          <span className="about-translate">— follow the flow</span>
-        </div>
 
         {/* THE CLOSE — identity statement */}
         <p className="about-closing about-line">
