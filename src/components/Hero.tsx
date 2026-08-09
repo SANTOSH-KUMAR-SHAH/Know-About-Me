@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
 
       {/* Visually Hidden SEO Header for Google Ranking */}
       <h1 className="sr-only">
-        Santosh Kumar Shah (SKS) — Best Award-Winning Creative Developer Portfolio Website in Nepal | UI Architect Kathmandu
+        Santosh Kumar Shah - Independent Web Developer and Digital Designer in Kathmandu, Nepal
       </h1>
 
       {/* Name — each line character-split for cascading reveal */}

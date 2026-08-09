@@ -32,7 +32,7 @@ const About: React.FC = () => {
       {/* LEFT — Pinned Photo */}
       <div className="about-photo-col">
         <div className="about-photo-frame">
-          <img src={portraitUrl} alt="Santosh Kumar Shah — Award-Winning Creative Developer in Kathmandu, Nepal" className="about-photo" />
+          <img src={portraitUrl} alt="Santosh Kumar Shah, independent web developer and digital designer in Kathmandu, Nepal" className="about-photo" />
           <div className="about-photo-gradient" />
         </div>
       </div>
@@ -40,7 +40,7 @@ const About: React.FC = () => {
       {/* RIGHT — The Story */}
       <div className="about-story-scroll">
 
-        <span className="about-tag about-line">WHO IS THIS GUY?</span>
+        <span className="about-tag about-line">THE PRACTICE</span>
 
         {/* THE HOOK — psychological curiosity gap */}
         <p className="about-lead about-line">

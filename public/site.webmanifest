@@ -1,0 +1,16 @@
+{
+  "name": "Santosh Kumar Shah",
+  "short_name": "Santosh Kumar Shah",
+  "description": "Independent web developer and digital designer in Kathmandu, Nepal.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#141414",
+  "theme_color": "#141414",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ]
+}
