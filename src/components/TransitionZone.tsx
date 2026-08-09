@@ -165,8 +165,8 @@ const TransitionZone: React.FC = () => {
       // PHASE 3: Service intro — 3D Word Scatter Reveal (giats-portfolio style)
       if (serviceIntroRef.current) {
         // Split text into words for scatter animation
-        const line1El = serviceIntroRef.current.querySelector('.service-intro-line1');
-        const line2El = serviceIntroRef.current.querySelector('.service-intro-line2');
+        const line1El = serviceIntroRef.current.querySelector('.service-intro-line1') as HTMLElement;
+        const line2El = serviceIntroRef.current.querySelector('.service-intro-line2') as HTMLElement;
         const line1Split = line1El ? new SplitType(line1El, { types: 'words' }) : null;
         const line2Split = line2El ? new SplitType(line2El, { types: 'words' }) : null;
         const allWords = [
