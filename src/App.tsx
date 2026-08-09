@@ -9,6 +9,8 @@ import TransitionZone from './components/TransitionZone';
 import Work from './components/Work';
 import Skills from './components/Skills';
 import Education from './components/Education';
+import Process from './components/Process';
+import Testimonial from './components/Testimonial';
 import SEOContent from './components/SEOContent';
 import Contact from './components/Contact';
 import ReturnTransition from './components/ReturnTransition';
@@ -40,8 +42,10 @@ function App() {
 
           {/* White Zone */}
           <div className="zone-white">
-            <Work />
             <Skills />
+            <Process />
+            <Work />
+            <Testimonial />
             <Education />
           </div>
 

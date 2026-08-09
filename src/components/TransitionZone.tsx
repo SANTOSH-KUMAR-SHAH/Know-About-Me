@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import SplitType from 'split-type';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CONTENT } from '../utils/constants';
@@ -62,11 +63,15 @@ const fragmentShader = `
   }
 `;
 
+const SERVICE_INTRO_LINE1 = "What I can do";
+const SERVICE_INTRO_LINE2 = "for you.";
+
 const TransitionZone: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const explanationRef = useRef<HTMLDivElement>(null);
+  const serviceIntroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
@@ -117,7 +122,7 @@ const TransitionZone: React.FC = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=350%",
+          end: "+=650%",
           scrub: 1,
           pin: true
         }
@@ -156,6 +161,63 @@ const TransitionZone: React.FC = () => {
          // Hold explanation briefly before scroll continues
          tl.to(lines, { opacity: 0, y: -20, stagger: 0.1, duration: 0.3 }, "+=0.3");
       }
+
+      // PHASE 3: Service intro — 3D Word Scatter Reveal (giats-portfolio style)
+      if (serviceIntroRef.current) {
+        // Split text into words for scatter animation
+        const line1El = serviceIntroRef.current.querySelector('.service-intro-line1');
+        const line2El = serviceIntroRef.current.querySelector('.service-intro-line2');
+        const line1Split = line1El ? new SplitType(line1El, { types: 'words' }) : null;
+        const line2Split = line2El ? new SplitType(line2El, { types: 'words' }) : null;
+        const allWords = [
+          ...(line1Split?.words ?? []),
+          ...(line2Split?.words ?? []),
+        ];
+
+        // Hide the container initially
+        gsap.set(serviceIntroRef.current, { opacity: 1 });
+
+        // Set all words to scattered 3D state
+        allWords.forEach((word) => {
+          gsap.set(word, {
+            opacity: 0,
+            z: gsap.utils.random(500, 950),
+            xPercent: gsap.utils.random(-100, 100),
+            yPercent: gsap.utils.random(-10, 10),
+            rotationX: gsap.utils.random(-90, 90),
+          });
+        });
+
+        // Hold on white for a beat
+        tl.to({}, { duration: 0.3 });
+
+        // Scatter reveal — words fly in from 3D space to form the text
+        tl.to(allWords, {
+          ease: 'expo',
+          opacity: 1,
+          rotationX: 0,
+          rotationY: 0,
+          xPercent: 0,
+          yPercent: 0,
+          z: 0,
+          stagger: {
+            each: 0.04,
+            from: 'random',
+          },
+          duration: 1.5,
+        });
+
+        // Hold the assembled text
+        tl.to({}, { duration: 0.5 });
+
+        // Fade everything out
+        tl.to(serviceIntroRef.current, {
+          opacity: 0,
+          y: -30,
+          duration: 0.5,
+          ease: 'power2.in',
+        });
+      }
     }, containerRef);
 
     return () => {
@@ -182,6 +244,12 @@ const TransitionZone: React.FC = () => {
            <p className="explanation-text">Most people fight the current. They push. They force. They burn out.</p>
            <p className="explanation-text">I learned something different. When you stop resisting and start listening — to the problem, to the code, to the silence between the lines — the answer finds you.</p>
            <p className="explanation-closing mt-4">That's not a philosophy. That's a weapon.</p>
+         </div>
+
+         {/* PHASE 3: Service intro — 3D word scatter reveal */}
+         <div className="service-intro-container" ref={serviceIntroRef} style={{ opacity: 0 }}>
+           <p className="service-intro-line1">{SERVICE_INTRO_LINE1}</p>
+           <p className="service-intro-line2">{SERVICE_INTRO_LINE2}</p>
          </div>
       </div>
       
