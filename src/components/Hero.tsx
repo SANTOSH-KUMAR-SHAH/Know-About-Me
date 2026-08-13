@@ -1,16 +1,22 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { splitText } from '../utils/splitText';
 import vidPath from '../assets/web.mp4';
 import { useSmartVideo } from '../hooks/useSmartVideo';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  startAnimation?: boolean;
+}
+
+const Hero: React.FC<HeroProps> = ({ startAnimation = false }) => {
   const welcomeRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
   const videoRef = useSmartVideo<HTMLVideoElement>();
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
 
   useLayoutEffect(() => {
-    const tl = gsap.timeline({ delay: 0.3 });
+    const tl = gsap.timeline({ paused: true });
+    tlRef.current = tl;
 
     // Welcome text — character-by-character reveal from above
     if (welcomeRef.current) {
@@ -22,7 +28,7 @@ const Hero: React.FC = () => {
         duration: 0.8,
         stagger: 0.02,
         ease: 'power3.out'
-      });
+      }, 0);
     }
 
     // Name lines — each line's characters cascade in with stagger
@@ -36,12 +42,19 @@ const Hero: React.FC = () => {
           duration: 0.9,
           stagger: 0.03,
           ease: 'expo.out'
-        }, lineIndex === 0 ? "-=0.3" : "-=0.6");
+        }, lineIndex === 0 ? 0.2 : (0.2 + lineIndex * 0.15));
       });
     }
 
     return () => { tl.kill(); };
   }, []);
+
+  // Trigger entrance animation when preloader starts exiting
+  useEffect(() => {
+    if (startAnimation && tlRef.current) {
+      tlRef.current.play();
+    }
+  }, [startAnimation]);
 
   return (
     <section className="hero-section">

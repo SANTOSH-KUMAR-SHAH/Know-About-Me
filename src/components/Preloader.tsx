@@ -8,43 +8,59 @@ import workVid from '../assets/work.mp4';
 import portraitUrl from '../assets/portrait.jpg';
 
 interface PreloaderProps {
+  onStartExit?: () => void;
   onComplete: () => void;
 }
 
-const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
+const Preloader: React.FC<PreloaderProps> = ({ onStartExit, onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLHeadingElement>(null);
 
   const [progress, setProgress] = useState(0);
+
+  // Store callbacks in refs to avoid re-triggering useEffect on parent re-renders
+  const onStartExitRef = useRef(onStartExit);
+  const onCompleteRef = useRef(onComplete);
+  onStartExitRef.current = onStartExit;
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     let minTimeElapsed = false;
     let mediaLoaded = false;
     let exitStarted = false;
 
-    // Master function to trigger the exit animation ONLY when both conditions are met
+    // Master function to trigger the exit animation ONLY when conditions are met
     const triggerExit = () => {
       if (minTimeElapsed && mediaLoaded && !exitStarted && nameRef.current && containerRef.current) {
         exitStarted = true;
         const chars = nameRef.current.querySelectorAll('.char');
-        const tlExit = gsap.timeline({ onComplete });
-        
+        const tlExit = gsap.timeline({
+          onComplete: () => {
+            if (onCompleteRef.current) onCompleteRef.current();
+          }
+        });
+
+        // 1. Preloader name characters fade up & out
         tlExit.to(chars, {
           opacity: 0,
-          y: -50,
-          stagger: 0.02,
-          duration: 0.5,
-          ease: "expo.in"
+          y: -40,
+          stagger: 0.015,
+          duration: 0.4,
+          ease: "power2.in"
         })
+        // 2. Preloader curtain lifts up smoothly, revealing the hero section underneath
         .to(containerRef.current, {
           yPercent: -100,
-          duration: 0.8,
-          ease: "power4.inOut"
-        });
+          duration: 1.1,
+          ease: "expo.inOut",
+          onStart: () => {
+            if (onStartExitRef.current) onStartExitRef.current();
+          }
+        }, "-=0.1");
       }
     };
 
-    // Condition 1: Run the intro animation and enforce a minimum display time
+    // Condition 1: Enforce minimum display time for text reveal
     const chars = nameRef.current?.querySelectorAll('.char');
     if (chars) {
       gsap.fromTo(chars, 
@@ -52,21 +68,20 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         { 
           opacity: 1, 
           y: 0, 
-          stagger: 0.05, 
-          duration: 1, 
+          stagger: 0.04, 
+          duration: 0.9, 
           ease: "expo.out",
           onComplete: () => {
-            // Natural read-time delay before allowing exit
             setTimeout(() => {
               minTimeElapsed = true;
               triggerExit();
-            }, 600);
+            }, 400);
           }
         }
       );
     }
 
-    // Condition 2: Actually wait for the massive videos to download (canplaythrough)
+    // Condition 2: Preload media assets
     const mediaSources = [webVid, workVid, portraitUrl];
     let loadedCount = 0;
 
@@ -83,9 +98,9 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       if (src.endsWith('.mp4')) {
         const vid = document.createElement('video');
         vid.src = src;
-        vid.preload = 'auto'; // Force download into browser memory
+        vid.preload = 'auto';
         vid.oncanplaythrough = checkMedia;
-        vid.onerror = checkMedia; // Don't hang forever if a network error occurs
+        vid.onerror = checkMedia;
         vid.load();
       } else {
         const img = new Image();
@@ -95,10 +110,18 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       }
     });
 
+    // Safety fallback: Force exit after max 3 seconds so preloader never hangs
+    const safetyTimer = setTimeout(() => {
+      minTimeElapsed = true;
+      mediaLoaded = true;
+      triggerExit();
+    }, 3000);
+
     return () => {
+      clearTimeout(safetyTimer);
       if (chars) gsap.killTweensOf(chars);
     };
-  }, [onComplete]);
+  }, []); // Run once on mount to prevent any animation interruption glitch
 
   const nameChars = CONTENT.hero.name.split('');
 
