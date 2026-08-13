@@ -122,7 +122,7 @@ const TransitionZone: React.FC = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=650%",
+          end: "+=400%",
           scrub: 1,
           pin: true
         }
@@ -132,7 +132,7 @@ const TransitionZone: React.FC = () => {
       tl.to(material.uniforms.uProgress, {
         value: 1.2, // Canvas fully dissolves to transparent revealing white background
         ease: "none",
-        duration: 1
+        duration: 0.2
       });
 
       // PHASE 2: Text fades in safely AFTER WebGL is gone
