@@ -76,7 +76,8 @@ const Skills: React.FC = () => {
           <span className="service-index">04</span>
           <div>
             <h3>Become something new</h3>
-            <p>Re-branding that brings the business into the next chapter.</p>
+            <p>Re-branding that brings the business into the next chapter.
+              This is probably the cleanest with your existing client-focused idea. It's basically called Re-brand</p>
           </div>
           <span className="service-arrow">{'->'}</span>
         </article>
