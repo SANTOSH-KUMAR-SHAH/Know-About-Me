@@ -26,7 +26,7 @@ const steps = [
   },
   {
     number: '04',
-    title: 'Build, design and Shape the solution',
+    title: 'Start Building',
     highlight: 'I design and develop the experience around that direction',
     body: ' — not around a template that everyone uses.'
   },
@@ -38,6 +38,7 @@ const steps = [
   }
 ];
 
+// 3D Word Scatter Fly-in Effect on Heading
 const TextReveal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -46,25 +47,41 @@ const TextReveal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     if (!element) return;
     const split = new SplitType(element, { types: 'words' });
     const words = split.words ?? [];
-    gsap.set(words, { opacity: 0, y: 30 });
-    const animation = gsap.to(words, {
-      opacity: 1,
-      y: 0,
-      stagger: 0.03,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: element,
-        start: 'top 85%',
+    gsap.set(words, { opacity: 0 });
+    const animation = gsap.fromTo(words,
+      {
+        willChange: 'opacity, transform',
+        z: () => gsap.utils.random(500, 950),
+        opacity: 0,
+        xPercent: () => gsap.utils.random(-100, 100),
+        yPercent: () => gsap.utils.random(-10, 10),
+        rotationX: () => gsap.utils.random(-90, 90),
       },
-    });
+      {
+        ease: 'expo',
+        opacity: 1,
+        rotationX: 0,
+        rotationY: 0,
+        xPercent: 0,
+        yPercent: 0,
+        z: 0,
+        stagger: { each: 0.018, from: 'random' },
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 88%',
+          end: '+=550',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
     return () => {
       animation.scrollTrigger?.kill();
       split.revert();
     };
   }, []);
 
-  return <div ref={containerRef}>{children}</div>;
+  return <div ref={containerRef} style={{ perspective: '1000px' }}>{children}</div>;
 };
 
 const Process: React.FC = () => {
@@ -77,8 +94,7 @@ const Process: React.FC = () => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>('.process-stack-card');
 
-      cards.forEach((card, i) => {
-        // Animate each stacked card on scroll
+      cards.forEach((card) => {
         gsap.fromTo(card,
           { opacity: 0.7, scale: 0.95 },
           {
@@ -96,7 +112,6 @@ const Process: React.FC = () => {
         );
       });
 
-      // Bottom accent line reveal
       gsap.fromTo('.process-line',
         { scaleX: 0 },
         {
@@ -131,7 +146,7 @@ const Process: React.FC = () => {
         </p>
       </div>
 
-      {/* Sticky Deck Cards Container */}
+      {/* Clean Minimalist Sticky Deck Container */}
       <div className="process-stack-container">
         {steps.map((step, idx) => (
           <article
@@ -142,15 +157,11 @@ const Process: React.FC = () => {
               zIndex: idx + 1,
             }}
           >
-            {/* Background Watermark */}
+            {/* Background Watermark Number */}
             <div className="process-card-watermark">{step.number}</div>
 
-            {/* Top Bar */}
+            {/* Top Minimal Number Badge */}
             <div className="process-card-header">
-              <div className="process-step-pill">
-                <span className="process-pill-dot" />
-                <span className="process-pill-text">PHASE 0{idx + 1} / 05</span>
-              </div>
               <span className="process-step-count">{step.number}</span>
             </div>
 
@@ -163,7 +174,7 @@ const Process: React.FC = () => {
               </p>
             </div>
 
-            {/* Bottom accent indicator */}
+            {/* Bottom Accent Indicator */}
             <div className="process-card-footer">
               <div className="process-footer-line" />
             </div>

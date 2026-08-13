@@ -2006,6 +2006,7 @@
   margin: 0 auto 5vh;
   position: relative;
   z-index: 2;
+  perspective: 1200px;
 }
 
 .process-heading h2 {
@@ -2080,34 +2081,13 @@
   z-index: 2;
 }
 
-.process-step-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 1rem;
-  border-radius: 30px;
-  background: rgba(224, 86, 36, 0.08);
-  border: 1px solid rgba(224, 86, 36, 0.2);
-}
-
-.process-pill-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 8px var(--color-accent);
-}
-
-.process-pill-text {
-  font: 700 0.75rem var(--font-mono);
-  letter-spacing: 0.15em;
-  color: var(--color-accent);
-}
-
 .process-step-count {
-  font: 800 1.6rem var(--font-heading);
-  color: rgba(32, 30, 31, 0.25);
-  letter-spacing: -0.05em;
+  font: 700 0.85rem var(--font-mono);
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.8rem;
+  background: rgba(224, 86, 36, 0.08);
+  border-radius: 20px;
 }
 
 .process-card-body {
