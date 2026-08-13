@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import workVid from '../assets/work.mp4';
+import logoAsset from '../assets/logo.png';
+import motionAsset from '../assets/motion.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +21,9 @@ interface CaseItemProps {
   teaser: string;
   isVideo?: boolean;
   videoSrc?: string;
+  isImage?: boolean;
+  imageSrc?: string;
+  isMobileRatio?: boolean;
   placeholderText?: string;
 }
 
@@ -36,6 +41,9 @@ const WorkItem: React.FC<CaseItemProps> = ({
   teaser,
   isVideo,
   videoSrc,
+  isImage,
+  imageSrc,
+  isMobileRatio,
   placeholderText,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -102,11 +110,13 @@ const WorkItem: React.FC<CaseItemProps> = ({
 
       <div className="work-center-container">
         {/* Visual Container */}
-        <div ref={visualRef} className="work-massive-visual">
+        <div ref={visualRef} className={`work-massive-visual ${isMobileRatio ? 'work-mobile-ratio' : ''}`}>
           {isVideo && videoSrc ? (
             <video autoPlay loop muted playsInline className="work-video">
               <source src={videoSrc} type="video/mp4" />
             </video>
+          ) : isImage && imageSrc ? (
+            <img src={imageSrc} className="work-video work-image-fit" alt="Visual asset" />
           ) : (
             <div className="work-video work-placeholder-bg">
               <span className="work-placeholder-label">{placeholderText}</span>
@@ -155,8 +165,10 @@ const Work: React.FC = () => {
       role: "Brand Designer",
       scope: "Logo & Visual Identity",
       result: "Completed & Ready",
-      placeholderText: "Logo Visual coming soon",
-      teaser: "Placeholder for logo - to be added later."
+      isImage: true,
+      imageSrc: logoAsset,
+      isMobileRatio: true,
+      teaser: "Save your brand logo asset as 'logo.png' in the assets folder to display it here."
     },
     {
       kicker: "MY BEST WORK / 02",
@@ -169,6 +181,7 @@ const Work: React.FC = () => {
       result: "Live and active",
       isVideo: true,
       videoSrc: workVid,
+      isMobileRatio: false,
       linkText: "Live → HAR Online Store",
       linkUrl: "https://haronline.pages.dev",
       teaser: "The goal wasn't to build a website. The goal was to remove a limitation."
@@ -182,8 +195,10 @@ const Work: React.FC = () => {
       role: "Motion Designer",
       scope: "Animation, Launch Assets",
       result: "Ready for launch",
-      placeholderText: "Motion Video coming soon",
-      teaser: "Creating a memorable entrance."
+      isVideo: true,
+      videoSrc: motionAsset,
+      isMobileRatio: true,
+      teaser: "Save your launch motion video as 'motion.mp4' in the assets folder to display it here."
     }
   ];
 
