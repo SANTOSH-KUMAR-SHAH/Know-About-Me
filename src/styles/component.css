@@ -287,7 +287,7 @@
     transition: filter 0.6s ease; 
   }
   .about-photo-gradient {
-    background: linear-gradient(to bottom, transparent 65%, var(--color-black) 100%);
+    background: linear-gradient(to bottom, var(--color-black) 0%, transparent 20%, transparent 65%, var(--color-black) 100%);
   }
   .about-story-scroll { padding: 8vh var(--container-padding); }
 }
