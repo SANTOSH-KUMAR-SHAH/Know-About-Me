@@ -24,6 +24,7 @@ interface CaseItemProps {
   isImage?: boolean;
   imageSrc?: string;
   isMobileRatio?: boolean;
+  isSquareRatio?: boolean;
   placeholderText?: string;
 }
 
@@ -44,6 +45,7 @@ const WorkItem: React.FC<CaseItemProps> = ({
   isImage,
   imageSrc,
   isMobileRatio,
+  isSquareRatio,
   placeholderText,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -110,7 +112,7 @@ const WorkItem: React.FC<CaseItemProps> = ({
 
       <div className="work-center-container">
         {/* Visual Container */}
-        <div ref={visualRef} className={`work-massive-visual ${isMobileRatio ? 'work-mobile-ratio' : ''}`}>
+        <div ref={visualRef} className={`work-massive-visual ${isMobileRatio ? 'work-mobile-ratio' : ''} ${isSquareRatio ? 'work-square-ratio' : ''}`}>
           {isVideo && videoSrc ? (
             <video autoPlay loop muted playsInline className="work-video">
               <source src={videoSrc} type="video/mp4" />
@@ -167,7 +169,7 @@ const Work: React.FC = () => {
       result: "Completed & Ready",
       isImage: true,
       imageSrc: logoAsset,
-      isMobileRatio: true,
+      isSquareRatio: true,
       teaser: "Save your brand logo asset as 'logo.png' in the assets folder to display it here."
     },
     {
