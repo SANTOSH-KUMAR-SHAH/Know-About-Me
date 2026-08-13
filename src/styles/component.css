@@ -483,6 +483,30 @@
   will-change: clip-path, transform;
 }
 .work-video { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); }
+.work-placeholder-bg {
+  background: linear-gradient(135deg, #181717 0%, #0d0c0c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.work-placeholder-bg::after {
+  content: '';
+  position: absolute;
+  inset: 2rem;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  pointer-events: none;
+}
+.work-placeholder-label {
+  font-family: var(--font-heading);
+  font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  z-index: 2;
+}
 .work-video-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to right, rgba(20, 20, 20, 0.7), transparent);

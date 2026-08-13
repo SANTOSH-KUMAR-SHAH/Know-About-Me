@@ -5,166 +5,194 @@ import workVid from '../assets/work.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Work: React.FC = () => {
+interface CaseItemProps {
+  kicker: string;
+  subtitle: string;
+  giantTitle: React.ReactNode;
+  overline: string;
+  description: string;
+  role: string;
+  scope: string;
+  result: string;
+  linkText?: string;
+  linkUrl?: string;
+  teaser: string;
+  isVideo?: boolean;
+  videoSrc?: string;
+  placeholderText?: string;
+}
+
+const WorkItem: React.FC<CaseItemProps> = ({
+  kicker,
+  subtitle,
+  giantTitle,
+  overline,
+  description,
+  role,
+  scope,
+  result,
+  linkText,
+  linkUrl,
+  teaser,
+  isVideo,
+  videoSrc,
+  placeholderText,
+}) => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(visualRef.current,
         { scale: 1.08, clipPath: 'inset(8% 8% 8% 8%)' },
-        { scale: 1, clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', end: 'center center', scrub: true } }
+        {
+          scale: 1,
+          clipPath: 'inset(0% 0% 0% 0%)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            end: 'center center',
+            scrub: true,
+          }
+        }
       );
       gsap.fromTo(titleRef.current,
         { y: 160, opacity: 0.2 },
-        { y: -140, opacity: 1, ease: 'none', scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: 1 } }
+        {
+          y: -140,
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+          }
+        }
       );
-      // Animate case entries
-      gsap.fromTo('.work-case-entry', { y: 60, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.18, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: '.work-cases-list', start: 'top 80%' } });
+      gsap.fromTo(infoRef.current,
+        { y: 90, opacity: 0, rotate: 2 },
+        {
+          y: 0,
+          opacity: 1,
+          rotate: 0,
+          ease: 'power3.out',
+          duration: 1.4,
+          scrollTrigger: {
+            trigger: infoRef.current,
+            start: 'top 85%',
+          }
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
   return (
     <section ref={sectionRef} className="work-section award-case-study">
-
-      {/* Section Header */}
+      {/* Intro Header */}
       <div className="section-intro work-section-intro">
-        <p className="section-kicker">MY BEST WORK</p>
+        <p className="section-kicker">{kicker}</p>
         <h2 className="charismatic-title charismatic-dark">HAR ONLINE STORE</h2>
-        <p className="work-intro-line">A real business problem, turned into a working digital experience.</p>
+        <p className="work-intro-line">{subtitle}</p>
       </div>
 
-      {/* Main Video Visual */}
       <div className="work-center-container">
+        {/* Visual Container */}
         <div ref={visualRef} className="work-massive-visual">
-          <video autoPlay loop muted playsInline className="work-video">
-            <source src={workVid} type="video/mp4" />
-          </video>
+          {isVideo && videoSrc ? (
+            <video autoPlay loop muted playsInline className="work-video">
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          ) : (
+            <div className="work-video work-placeholder-bg">
+              <span className="work-placeholder-label">{placeholderText}</span>
+            </div>
+          )}
           <div className="work-video-overlay" />
           <span className="case-floating-label">LIVE / HAR</span>
         </div>
-        <h3 ref={titleRef} className="work-giant-title">HAR<br />ONLINE<br />STORE</h3>
-      </div>
 
-      {/* 3-part Case Study */}
-      <div className="work-cases-list">
+        {/* Floating Info Card */}
+        <div ref={infoRef} className="work-floating-info">
+          <h4 className="info-overline">{overline}</h4>
+          <p className="case-description text-body">{description}</p>
+          <ul className="stats-list">
+            <li><span>Role</span> {role}</li>
+            <li><span>Scope</span> {scope}</li>
+            <li><span>Result</span> {result}</li>
+          </ul>
+          {linkText && linkUrl && (
+            <div className="case-links">
+              <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="case-link hover-target">
+                {linkText} <span>{'->'}</span>
+              </a>
+            </div>
+          )}
+          <p className="work-more-teaser">{teaser}</p>
+        </div>
 
-        {/* 01 — Brand Identity */}
-        <article className="work-case-entry">
-          <div className="work-case-header">
-            <span className="work-case-num">01</span>
-            <div className="work-case-title-block">
-              <h3 className="work-case-title">Brand Identity</h3>
-              <span className="work-case-sub">Logo / visual identity</span>
-            </div>
-          </div>
-          <div className="work-case-body">
-            <div className="work-case-text">
-              <p className="work-case-lede">
-                A business needs an identity before it needs attention.
-              </p>
-              <p className="work-case-copy">
-                Har needed an identity that could live beyond the physical shop.
-                I designed HAR's logo as the visual foundation for its move into
-                the digital space — something simple enough to recognize and
-                strong enough to grow with the business.
-              </p>
-            </div>
-            {/* Logo placeholder */}
-            <div className="work-case-asset work-logo-placeholder">
-              <span className="work-logo-placeholder-text">Logo coming soon</span>
-            </div>
-          </div>
-        </article>
-
-        {/* 02 — Digital Experience */}
-        <article className="work-case-entry">
-          <div className="work-case-header">
-            <span className="work-case-num">02</span>
-            <div className="work-case-title-block">
-              <h3 className="work-case-title">Digital Experience</h3>
-              <span className="work-case-sub">Website / ecommerce system</span>
-            </div>
-          </div>
-          <div className="work-case-body">
-            <div className="work-case-text">
-              <p className="work-case-lede">
-                The store was already good. The problem was that not everyone could reach it.
-              </p>
-              <p className="work-case-copy">
-                A customer had to physically find the store to discover the products,
-                ask questions, and place an order.
-                But what about someone living outside Kathmandu?
-              </p>
-              <p className="work-case-copy">
-                <em>That was the gap I saw.</em>
-              </p>
-              <p className="work-case-copy">
-                The business didn't simply need a website.
-                They needed a way to sell beyond the physical store.
-              </p>
-              <p className="work-case-copy">
-                I designed and built an e-commerce system around that opportunity:
-              </p>
-              <ul className="work-case-list">
-                <li>Product discovery</li>
-                <li>Product presentation</li>
-                <li>Shopping experience</li>
-                <li>Ordering &amp; Checkout</li>
-                <li>Business-side tools</li>
-                <li>Admin side tools</li>
-              </ul>
-              <p className="work-case-result">
-                <strong>The result —</strong> The business now has a digital place
-                where customers beyond the physical store can discover and order its products.
-              </p>
-              <div className="work-case-links">
-                <a href="https://haronline.pages.dev" target="_blank" rel="noopener noreferrer" className="case-link hover-target">
-                  Live → HAR Online Store <span>{'→'}</span>
-                </a>
-              </div>
-              <p className="work-case-principle">
-                <em>The goal wasn't to build a website. The goal was to remove a limitation.</em>
-              </p>
-            </div>
-            {/* Website visual placeholder */}
-            <div className="work-case-asset work-logo-placeholder">
-              <span className="work-logo-placeholder-text">Visual coming soon</span>
-            </div>
-          </div>
-        </article>
-
-        {/* 03 — Launch / Motion Design */}
-        <article className="work-case-entry">
-          <div className="work-case-header">
-            <span className="work-case-num">03</span>
-            <div className="work-case-title-block">
-              <h3 className="work-case-title">Launch / Motion Design</h3>
-              <span className="work-case-sub">Announcement</span>
-            </div>
-          </div>
-          <div className="work-case-body">
-            <div className="work-case-text">
-              <p className="work-case-lede">
-                A digital launch deserves its own moment.
-              </p>
-              <p className="work-case-copy">
-                I designed and animated this piece to introduce HAR Online Store's
-                new digital presence (website) and create a consistent visual
-                connection between the brand and its launch.
-              </p>
-            </div>
-            {/* Motion visual placeholder */}
-            <div className="work-case-asset work-logo-placeholder">
-              <span className="work-logo-placeholder-text">Motion coming soon</span>
-            </div>
-          </div>
-        </article>
-
+        {/* Giant Background Title */}
+        <h3 ref={titleRef} className="work-giant-title">
+          {giantTitle}
+        </h3>
       </div>
     </section>
+  );
+};
+
+const Work: React.FC = () => {
+  const cases: CaseItemProps[] = [
+    {
+      kicker: "MY BEST WORK / 01",
+      subtitle: "01 — Brand Identity",
+      giantTitle: <>HAR<br />BRAND<br />LOGO</>,
+      overline: "Logo / visual identity",
+      description: "A business needs an identity before it needs attention. Har needed an identity that could live beyond the physical shop. I designed HAR's logo as the visual foundation for its move into the digital space — something simple enough to recognize and strong enough to grow with the business.",
+      role: "Brand Designer",
+      scope: "Logo & Visual Identity",
+      result: "Completed & Ready",
+      placeholderText: "Logo Visual coming soon",
+      teaser: "Placeholder for logo - to be added later."
+    },
+    {
+      kicker: "MY BEST WORK / 02",
+      subtitle: "02 — Digital Experience",
+      giantTitle: <>HAR<br />ONLINE<br />STORE</>,
+      overline: "Website / ecommerce system",
+      description: "The store was already good. The problem was that not everyone could reach it. A customer had to physically find the store to discover the products, ask questions, and place an order. But what about someone living outside Kathmandu? That was the gap I saw. The business didn't simply need a website. They needed a way to sell beyond the physical store. So I designed and built an e-commerce system around that opportunity: Product discovery, presentation, ordering, checkout, and admin tools.",
+      role: "Creative engineer",
+      scope: "Strategy, Design, Development",
+      result: "Live and active",
+      isVideo: true,
+      videoSrc: workVid,
+      linkText: "Live → HAR Online Store",
+      linkUrl: "https://haronline.pages.dev",
+      teaser: "The goal wasn't to build a website. The goal was to remove a limitation."
+    },
+    {
+      kicker: "MY BEST WORK / 03",
+      subtitle: "03 — Launch",
+      giantTitle: <>LAUNCH<br />MOTION<br />DESIGN</>,
+      overline: "Motion design / announcement",
+      description: "A digital launch deserves its own moment. I designed and animated this piece to introduce HAR Online Store's new digital presence (website) and create a consistent visual connection between the brand and its launch.",
+      role: "Motion Designer",
+      scope: "Animation, Launch Assets",
+      result: "Ready for launch",
+      placeholderText: "Motion Video coming soon",
+      teaser: "Creating a memorable entrance."
+    }
+  ];
+
+  return (
+    <>
+      {cases.map((caseItem, idx) => (
+        <WorkItem key={idx} {...caseItem} />
+      ))}
+    </>
   );
 };
 
