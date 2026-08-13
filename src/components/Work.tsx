@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import workVid from '../assets/work.mp4';
 import logoAsset from '../assets/logo.png';
 import motionAsset from '../assets/motion.mp4';
+import { useSmartVideo } from '../hooks/useSmartVideo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,6 +50,7 @@ const WorkItem: React.FC<CaseItemProps> = ({
   const titleRef = useRef<HTMLHeadingElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
+  const videoRef = useSmartVideo<HTMLVideoElement>();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -111,7 +113,7 @@ const WorkItem: React.FC<CaseItemProps> = ({
         {/* Visual Container */}
         <div ref={visualRef} className={`work-massive-visual ${isMobileRatio ? 'work-mobile-ratio' : ''} ${isSquareRatio ? 'work-square-ratio' : ''}`}>
           {isVideo && videoSrc ? (
-            <video autoPlay loop muted playsInline className="work-video">
+            <video ref={videoRef} loop muted playsInline className="work-video" preload="metadata">
               <source src={videoSrc} type="video/mp4" />
             </video>
           ) : isImage && imageSrc ? (

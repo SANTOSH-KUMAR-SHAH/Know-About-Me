@@ -2,10 +2,12 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { splitText } from '../utils/splitText';
 import vidPath from '../assets/web.mp4';
+import { useSmartVideo } from '../hooks/useSmartVideo';
 
 const Hero: React.FC = () => {
   const welcomeRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
+  const videoRef = useSmartVideo<HTMLVideoElement>();
 
   useLayoutEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 });
@@ -44,7 +46,7 @@ const Hero: React.FC = () => {
   return (
     <section className="hero-section">
       <div className="hero-video-wrapper">
-        <video className="hero-video" autoPlay loop muted playsInline>
+        <video ref={videoRef} className="hero-video" loop muted playsInline preload="metadata">
           <source src={vidPath} type="video/mp4" />
         </video>
         <div className="hero-video-overlay"></div>
@@ -57,8 +59,6 @@ const Hero: React.FC = () => {
           <span style={{ color: 'var(--color-accent)' }}>{splitText("business problems.")}</span>
         </p>
       </div>
-
-
 
       {/* Visually Hidden SEO Header for Google Ranking */}
       <h1 className="sr-only">
