@@ -25,12 +25,12 @@ const About: React.FC = () => {
       // Exit dissolve: fade out photo frame and story column as section scrolls out
       gsap.to('.about-photo-frame, .about-story-scroll', {
         opacity: 0,
-        y: -60,
+        y: -100,
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'bottom bottom',
-          end: 'bottom top',
+          start: 'bottom 140%',
+          end: 'bottom 95%',
           scrub: true,
           invalidateOnRefresh: true,
         }

@@ -80,7 +80,7 @@
 }
 .welcome-text {
   font-size: clamp(0.75rem, 1.3vw, 1.1rem);
-  color: var(--color-gray-light);
+  color: var(--color-accent);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   line-height: 1.6;
