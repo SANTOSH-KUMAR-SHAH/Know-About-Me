@@ -122,8 +122,8 @@ const TransitionZone: React.FC = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=1400%",
-          scrub: 2.5,
+          end: "+=350%",
+          scrub: 0.8,
           pin: true
         }
       });
@@ -193,7 +193,7 @@ const TransitionZone: React.FC = () => {
 
         // Scatter reveal — words fly in from 3D space to form the text
         tl.to(allWords, {
-          ease: 'expo',
+          ease: 'expo.out',
           opacity: 1,
           rotationX: 0,
           rotationY: 0,
@@ -201,20 +201,20 @@ const TransitionZone: React.FC = () => {
           yPercent: 0,
           z: 0,
           stagger: {
-            each: 0.04,
+            each: 0.02,
             from: 'random',
           },
-          duration: 1.5,
+          duration: 0.8,
         });
 
-        // Hold the assembled text
-        tl.to({}, { duration: 0.5 });
+        // Hold the assembled text briefly
+        tl.to({}, { duration: 0.3 });
 
         // Fade everything out
         tl.to(serviceIntroRef.current, {
           opacity: 0,
           y: -30,
-          duration: 0.5,
+          duration: 0.3,
           ease: 'power2.in',
         });
       }
