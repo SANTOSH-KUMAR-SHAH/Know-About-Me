@@ -19,7 +19,25 @@ const Education: React.FC = () => {
     }, ref);
     return () => ctx.revert();
   }, []);
-  return <section className="standard-section" ref={ref}><div className="standard-copy"><p className="section-kicker">THE STANDARD / NOISE IS EASY</p><p className="standard-lede">Quality comes before the words used to describe it.</p><p className="standard-body">I started building before I was old enough to vote. The years since have been less about collecting labels and more about learning how to make difficult things feel simple.</p><p className="standard-principle">The world does not care where you learned.<br /><em>It cares what you can do.</em></p></div><div className="edu-master-section"><div className="edu-master-content"><span className="edu-master-pre">not the jack - but I am the</span><h3 className="edu-master-huge">MASTER<br />OF SOME<br />TRADES.</h3></div></div></section>;
+
+  return (
+    <section className="standard-section" ref={ref}>
+      <div className="standard-copy">
+        <p className="section-kicker">AND THE LAST THINGS</p>
+        <p className="standard-lede">Quality comes before the words used to describe it.</p>
+        <p className="standard-principle">
+          The world does not care where you learned.<br />
+          <em>It cares what you can do.</em>
+        </p>
+      </div>
+      <div className="edu-master-section">
+        <div className="edu-master-content">
+          <span className="edu-master-pre">Design, branding, business and human behavior around it.</span>
+          <h3 className="edu-master-huge">WEBSITE<br />DEVELOPMENT<br />AT THE CORE</h3>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Education;

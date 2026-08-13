@@ -50,11 +50,10 @@ const Hero: React.FC = () => {
         <div className="hero-video-overlay"></div>
       </div>
 
-      {/* Welcome text — character split for kinetic reveal */}
+      {/* Welcome text — character-by-character reveal from above */}
       <div ref={welcomeRef} className="hero-welcome">
         <p className="welcome-text">
-          {splitText("Welcome to the world of ")}
-          <span className="welcome-highlight">{splitText("obsession")}</span>
+          {splitText("I build digital experiences around real business problems.")}
         </p>
       </div>
 

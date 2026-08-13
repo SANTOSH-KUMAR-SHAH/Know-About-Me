@@ -25,7 +25,7 @@ const Contact: React.FC = () => {
   const email = `${CONTENT.emailUser}@${CONTENT.emailDomain}`;
   return <section className="contact-section-v2" ref={sectionRef}>
     <div className="contact-grain" />
-    <div className="contact-top"><p className="contact-eyebrow">THE NEXT THING</p><h2 className="contact-tagline" ref={titleRef}>Tell me what<br />you are building.</h2><p className="contact-response">I usually reply within 30 minutes.</p></div>
+    <div className="contact-top"><p className="contact-eyebrow">THE NEXT THING</p><h2 className="contact-tagline" ref={titleRef}>Tell me what<br />isn't working.</h2></div>
     <div className="contact-email-wrap" ref={emailRef}><a className="contact-email-giant" href={`mailto:${email}`}>{email}</a><span className="contact-email-arrow">{'->'}</span></div>
     <div className="contact-socials" ref={socialsRef}>{CONTENT.socials.map((social, i) => <a key={i} className="contact-social-item" href={social.url} target="_blank" rel="noopener noreferrer"><span className="contact-social-num">0{i + 1}</span><span className="contact-social-name">{social.name}</span><span className="contact-social-arrow">{'->'}</span></a>)}</div>
     <div className="contact-footer-v2" ref={footerRef}><span className="footer-philosophy-v2">{CONTENT.hero.philosophyDevanagari}</span><span className="footer-tagline-v2">{CONTENT.hero.philosophyTranslation}</span><span className="footer-year-v2">Copyright {new Date().getFullYear()} SANTOSH KUMAR SHAH</span></div>

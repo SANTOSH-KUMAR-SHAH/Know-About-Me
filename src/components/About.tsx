@@ -11,7 +11,6 @@ const About: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Each paragraph fades in one at a time as user scrolls
       const lines = gsap.utils.toArray('.about-line');
       lines.forEach((line: any) => {
         gsap.fromTo(line,
@@ -21,6 +20,20 @@ const About: React.FC = () => {
             scrollTrigger: { trigger: line, start: 'top 82%' }
           }
         );
+      });
+
+      // Exit dissolve: fade out photo frame and story column as section scrolls out
+      gsap.to('.about-photo-frame, .about-story-scroll', {
+        opacity: 0,
+        y: -60,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'bottom bottom',
+          end: 'bottom top',
+          scrub: true,
+          invalidateOnRefresh: true,
+        }
       });
     }, sectionRef);
     return () => ctx.revert();
@@ -40,104 +53,83 @@ const About: React.FC = () => {
       {/* RIGHT — The Story */}
       <div className="about-story-scroll">
 
-        <span className="about-tag about-line">THE PRACTICE</span>
+        <span className="about-tag about-line">WHO IS THIS GUY?</span>
 
-        {/* THE HOOK — psychological curiosity gap */}
+        {/* THE HOOK — speaking directly to business owner */}
         <p className="about-lead about-line">
-          Everyone told me to<br />
-          pick one thing.
+          You know your business<br />
+          better than I do.
         </p>
 
         <p className="about-whisper about-line">
-          I picked everything.
+          You've spent years building it.
         </p>
 
-        {/* BUILDING THE WORLD */}
+        {/* ACKNOWLEDGE WHAT THEY KNOW */}
         <p className="about-para about-line">
-          I’ve always walked the line between technology and the liberal arts. While others were memorizing formulas, I was reading poetry—searching for the intersection where beauty meets logic. It taught me something no textbook could: <em>how to feel a problem before you ever touch the code.</em>
+          You know your customers. You know your products. You know what works.
         </p>
 
-        <p className="about-para about-line">
-          Then I moved to literature. Then to studying hardware — how circuits think,
-          how signals travel, how a machine decides what to do next.
-        </p>
+        {/* THE BUT — pattern interrupt */}
+        <p className="about-accent about-line">BUT</p>
 
         <p className="about-para about-line">
-          Then I started studying people. Their psychology. Their patterns.
-          Why they click where they click. Why they trust what they trust.
+          A great product can still be difficult to understand.{' '}
+          A strong business can still look ordinary online.{' '}
+          A growing company can still have an identity that{' '}
+          <em>no longer fits where it is going.</em>
         </p>
 
         <div className="about-divider about-line" />
 
-        {/* THE PHILOSOPHY — the system thinker reveal */}
+        {/* THE APPROACH */}
         <p className="about-para about-line">
-          And somewhere along the way, I realized something most people
-          never do:
+          That's why I don't begin with a website, a logo, or a visual style.
         </p>
 
         <p className="about-big about-line">
-          The owner of a hospital<br />
-          isn't the best doctor.
+          I begin with you,<br />
+          your goal and<br />
+          your business.
         </p>
 
         <p className="about-para about-line">
-          He's the person who understands how <em>the system</em> works.
-          The hiring. The workflow. The patient experience. The infrastructure
-          that holds everything together while no one's watching.
+          I look at the business, the people, the brand, the customer, the workflow
+          before deciding what to build.
         </p>
 
         <p className="about-para about-line">
-          That's what I study. Not just code.<br />
-          <em>Systems.</em>
+          Sometimes the answer is an ecommerce store.{' '}
+          Sometimes it's a personal portfolio, a brand website, or a complete rebrand.
+        </p>
+
+        <p className="about-para about-line">
+          <em>Different problems need different solutions.</em>
         </p>
 
         <div className="about-divider about-line" />
 
-        {/* THE PROOF — the college story */}
-        <p className="about-para about-line">
-          I was seventeen years old when I looked at my college's
-          digital infrastructure and thought:
-        </p>
-
-        <p className="about-accent about-line">
-          "I can build this better."
-        </p>
-
-        <p className="about-para about-line">
-          So I did. From scratch. Every page, every system, every pixel —
-          designed, developed, and shipped by a kid who wasn't even
-          old enough to vote.
-        </p>
-
-        <p className="about-para about-line">
-          The college already had a website. They refused to replace it with mine.
-        </p>
-
-        <p className="about-para about-line">
-          That's fine.
-        </p>
-
-        <p className="about-para about-line">
-          I preserved it. Not out of spite. Out of patience. Because
-          I know quality doesn't need permission — <em>it just needs time.</em>
-        </p>
-
-        {/* THE TEASE — bridge to Work section */}
+        {/* THE PRINCIPLE */}
         <p className="about-para-quiet about-line">
-          Just keep scrolling. You'll see it.
+          The technology may change. The goal won't.
         </p>
 
-        <div className="about-divider about-line" />
+        <p className="about-para about-line">
+          Whatever the problem is, I combine{' '}
+          <strong>development, design, branding, psychology, and business thinking</strong>{' '}
+          to solve it.
+        </p>
 
-
-        {/* THE CLOSE — identity statement */}
+        {/* THE IDENTITY STATEMENT */}
         <p className="about-closing about-line">
-          I make complex things simple.
+          I'm <strong>Santosh Kumar Shah</strong> — a Liberal Engineer working across
+          some impactful fields to turn real business problems into digital experiences
+          that people <em>understand, trust, and remember.</em>
         </p>
 
         <p className="about-identity about-line">
-          That's not a skill.<br />
-          That's who I am.
+          Not just something that looks good.<br />
+          <em>Something that works.</em>
         </p>
 
       </div>

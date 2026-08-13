@@ -6,11 +6,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-  ['01', 'Listen beneath the brief', 'We start with your business, your audience, and the problem that keeps getting in the way.'],
-  ['02', 'Find the real question', 'Before screens, we define what the experience needs to change and what success should feel like.'],
-  ['03', 'Shape the direction', 'We turn the insight into a clear creative and digital direction with a point of view.'],
-  ['04', 'Build the experience', 'I design and engineer the interface carefully, with the details that make it feel effortless.'],
-  ['05', 'Refine until it is true', 'We test, remove friction, and bring the work to a place where it can meet the world confidently.'],
+  ['01', 'Understanding you, your business and your goal', 'Your business comes first. I learn how it works, who your customers are, and what you are trying to achieve.'],
+  ['02', 'Finding the gap', 'I study the problem. Do research on customers, competitors, market, existing experience — everything that can reveal the real issue.'],
+  ['03', 'Deciding the best solution', 'We decide what should be built and what should be changed.'],
+  ['04', 'Start Building', 'I design and develop the experience around that direction — not around a template that everyone uses.'],
+  ['05', 'Improving until it solves the problem', 'We test, refine, remove what doesn\'t work, and keep improving until the solution feels right and works properly.'],
 ];
 
 const TextReveal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -62,11 +62,36 @@ const Process: React.FC = () => {
     }, ref);
     return () => ctx.revert();
   }, []);
-  return <section className="process-section" ref={ref}>
-    <div className="process-heading"><p className="section-kicker">THE METHOD / A CLEARER WAY FORWARD</p><TextReveal><h2>You do not need to have it all figured out.<br /><em>That is where we begin.</em></h2></TextReveal><p className="process-lede">Bring the ambition, the questions, and the problem you want to solve. I will help turn them into a direction you can believe in.</p></div>
-    <div className="process-list">{steps.map(([number, title, copy]) => <article className="process-step" key={number}><div className="process-number">{number}</div><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
-    <div className="process-line" />
-  </section>;
+
+  return (
+    <section className="process-section" ref={ref}>
+      <div className="process-heading">
+        <p className="section-kicker">THE METHOD / A CLEARER WAY FORWARD</p>
+        <TextReveal>
+          <h2>
+            I DON'T START WITH THE<br />
+            <em>WEBSITE / BRANDING / REBRANDING</em>
+          </h2>
+        </TextReveal>
+        <p className="process-lede">
+          Bring the ambition, the questions, and the problem you want to solve.
+          I will help turn them into a direction you can believe in.
+        </p>
+      </div>
+      <div className="process-list">
+        {steps.map(([number, title, copy]) => (
+          <article className="process-step" key={number}>
+            <div className="process-number">{number}</div>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="process-line" />
+    </section>
+  );
 };
 
 export default Process;
