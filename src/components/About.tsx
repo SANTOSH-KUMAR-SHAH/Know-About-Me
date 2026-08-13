@@ -29,8 +29,8 @@ const About: React.FC = () => {
         ease: 'none',
         scrollTrigger: {
           trigger: '.about-identity',
-          start: 'top 55%',
-          end: 'bottom 10%',
+          start: 'top 75%',
+          end: 'bottom -20%',
           scrub: true,
           invalidateOnRefresh: true,
         }

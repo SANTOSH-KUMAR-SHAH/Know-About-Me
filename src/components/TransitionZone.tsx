@@ -83,8 +83,8 @@ const TransitionZone: React.FC = () => {
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
 
     // We match the background black exactly so it blends seamlessly
-    const rgb = { r: 32/255, g: 30/255, b: 31/255 }; // Exact match of #201E1F / var(--color-black)
-    
+    const rgb = { r: 32 / 255, g: 30 / 255, b: 31 / 255 }; // Exact match of #201E1F / var(--color-black)
+
     const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
       vertexShader,
@@ -117,49 +117,49 @@ const TransitionZone: React.FC = () => {
 
     // 2. Setup GSAP ScrollTrigger Sequence
     const ctx = gsap.context(() => {
-      
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=400%",
-          scrub: 1,
+          end: "+=1400%",
+          scrub: 2.5,
           pin: true
         }
       });
 
-      // PHASE 1: WebGL Dissolve completes
+      // PHASE 1: WebGL Dissolve completes — long, slow, cinematic
       tl.to(material.uniforms.uProgress, {
         value: 1.2, // Canvas fully dissolves to transparent revealing white background
         ease: "none",
-        duration: 0.2
+        duration: 0.6
       });
 
       // PHASE 2: Text fades in safely AFTER WebGL is gone
       if (textRef.current && explanationRef.current) {
-         const devQuote = textRef.current.querySelector('.font-devanagari');
-         const transQuote = textRef.current.querySelector('.transition-translation');
-         
-         const lines = explanationRef.current.querySelectorAll('p');
+        const devQuote = textRef.current.querySelector('.font-devanagari');
+        const transQuote = textRef.current.querySelector('.transition-translation');
 
-         tl.fromTo([devQuote, transQuote],
-           { opacity: 0, y: 30 },
-           { opacity: 1, y: 0, stagger: 0.1, duration: 0.3 }
-         );
+        const lines = explanationRef.current.querySelectorAll('p');
 
-         tl.to([devQuote, transQuote],
-           { opacity: 0, y: -20, duration: 0.3 },
-           "+=0.2"
-         );
+        tl.fromTo([devQuote, transQuote],
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, stagger: 0.1, duration: 0.3 }
+        );
 
-         tl.fromTo(lines,
-           { opacity: 0, y: 30 },
-           { opacity: 1, y: 0, stagger: 0.2, duration: 0.4 },
-           "-=0.1"
-         );
+        tl.to([devQuote, transQuote],
+          { opacity: 0, y: -20, duration: 0.3 },
+          "+=0.2"
+        );
 
-         // Hold explanation briefly before scroll continues
-         tl.to(lines, { opacity: 0, y: -20, stagger: 0.1, duration: 0.3 }, "+=0.3");
+        tl.fromTo(lines,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, stagger: 0.2, duration: 0.4 },
+          "-=0.1"
+        );
+
+        // Hold explanation briefly before scroll continues
+        tl.to(lines, { opacity: 0, y: -20, stagger: 0.1, duration: 0.3 }, "+=0.3");
       }
 
       // PHASE 3: Service intro — 3D Word Scatter Reveal (giats-portfolio style)
@@ -234,25 +234,25 @@ const TransitionZone: React.FC = () => {
     <div ref={containerRef} className="transition-zone-webgl">
       {/* Light background layer revealed underneath */}
       <div className="transition-light-layer">
-         <div className="transition-text-stack" ref={textRef}>
-           <span className="font-devanagari" style={{ opacity: 0 }}>{CONTENT.hero.philosophyDevanagari}</span>
-           <span className="transition-translation" style={{ opacity: 0 }}>{CONTENT.hero.philosophyTranslation}</span>
-         </div>
-         
-         {/* Using CSS grid or absolute position so it replaces devanagari */}
-         <div className="transition-explanation-webgl" ref={explanationRef}>
-           <p className="explanation-text">Most people fight the current. They push. They force. They burn out.</p>
-           <p className="explanation-text">I learned something different. When you stop resisting and start listening — to the problem, to the code, to the silence between the lines — the answer finds you.</p>
-           <p className="explanation-closing mt-4">That's not a philosophy. That's a weapon.</p>
-         </div>
+        <div className="transition-text-stack" ref={textRef}>
+          <span className="font-devanagari" style={{ opacity: 0 }}>{CONTENT.hero.philosophyDevanagari}</span>
+          <span className="transition-translation" style={{ opacity: 0 }}>{CONTENT.hero.philosophyTranslation}</span>
+        </div>
 
-         {/* PHASE 3: Service intro — 3D word scatter reveal */}
-         <div className="service-intro-container" ref={serviceIntroRef} style={{ opacity: 0 }}>
-           <p className="service-intro-line1">{SERVICE_INTRO_LINE1}</p>
-           <p className="service-intro-line2">{SERVICE_INTRO_LINE2}</p>
-         </div>
+        {/* Using CSS grid or absolute position so it replaces devanagari */}
+        <div className="transition-explanation-webgl" ref={explanationRef}>
+          <p className="explanation-text">Most people fight the current. They push. They force. They burn out.</p>
+          <p className="explanation-text">I learned something different. When you stop resisting and start listening — to the problem, to the code, to the silence between the lines — the answer finds you.</p>
+          <p className="explanation-closing mt-4">That's not a philosophy. That's a weapon.</p>
+        </div>
+
+        {/* PHASE 3: Service intro — 3D word scatter reveal */}
+        <div className="service-intro-container" ref={serviceIntroRef} style={{ opacity: 0 }}>
+          <p className="service-intro-line1">{SERVICE_INTRO_LINE1}</p>
+          <p className="service-intro-line2">{SERVICE_INTRO_LINE2}</p>
+        </div>
       </div>
-      
+
       {/* Dark overlay layer dissolving on top */}
       <canvas className="transition-canvas" ref={canvasRef}></canvas>
     </div>

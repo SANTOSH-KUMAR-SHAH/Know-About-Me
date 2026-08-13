@@ -13,12 +13,12 @@ interface CaseItemProps {
   giantTitle: React.ReactNode;
   overline: string;
   description: string;
-  role: string;
-  scope: string;
-  result: string;
+  role?: string;
+  scope?: string;
+  result?: string;
   linkText?: string;
   linkUrl?: string;
-  teaser: string;
+  teaser?: string;
   isVideo?: boolean;
   videoSrc?: string;
   isImage?: boolean;
@@ -34,9 +34,6 @@ const WorkItem: React.FC<CaseItemProps> = ({
   giantTitle,
   overline,
   description,
-  role,
-  scope,
-  result,
   linkText,
   linkUrl,
   teaser,
@@ -132,11 +129,6 @@ const WorkItem: React.FC<CaseItemProps> = ({
         <div ref={infoRef} className="work-floating-info">
           <h4 className="info-overline">{overline}</h4>
           <p className="case-description text-body">{description}</p>
-          <ul className="stats-list">
-            <li><span>Role</span> {role}</li>
-            <li><span>Scope</span> {scope}</li>
-            <li><span>Result</span> {result}</li>
-          </ul>
           {linkText && linkUrl && (
             <div className="case-links">
               <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="case-link hover-target">
@@ -170,7 +162,6 @@ const Work: React.FC = () => {
       isImage: true,
       imageSrc: logoAsset,
       isSquareRatio: true,
-      teaser: "Save your brand logo asset as 'logo.png' in the assets folder to display it here."
     },
     {
       kicker: "MY BEST WORK / 02",
@@ -200,7 +191,6 @@ const Work: React.FC = () => {
       isVideo: true,
       videoSrc: motionAsset,
       isMobileRatio: true,
-      teaser: "Save your launch motion video as 'motion.mp4' in the assets folder to display it here."
     }
   ];
 

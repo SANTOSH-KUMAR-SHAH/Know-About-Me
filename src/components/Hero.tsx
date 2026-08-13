@@ -53,7 +53,8 @@ const Hero: React.FC = () => {
       {/* Welcome text — character-by-character reveal from above */}
       <div ref={welcomeRef} className="hero-welcome">
         <p className="welcome-text">
-          {splitText("I build digital experiences around real business problems.")}
+          <span style={{ color: 'white' }}>{splitText("I build digital experiences around real ")}</span>
+          <span style={{ color: 'var(--color-accent)' }}>{splitText("business problems.")}</span>
         </p>
       </div>
 
