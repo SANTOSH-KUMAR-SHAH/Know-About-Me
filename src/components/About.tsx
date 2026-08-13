@@ -22,15 +22,15 @@ const About: React.FC = () => {
         );
       });
 
-      // Exit dissolve: fade out photo frame and story column as section scrolls out
+      // Exit dissolve: fade out photo frame and story column as the last paragraph scrolls up
       gsap.to('.about-photo-frame, .about-story-scroll', {
         opacity: 0,
         y: -100,
         ease: 'none',
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'bottom 140%',
-          end: 'bottom 95%',
+          trigger: '.about-identity',
+          start: 'top 55%',
+          end: 'bottom 10%',
           scrub: true,
           invalidateOnRefresh: true,
         }
