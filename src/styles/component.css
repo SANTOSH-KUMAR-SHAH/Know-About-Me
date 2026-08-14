@@ -2179,8 +2179,8 @@
 }
 
 .testimonial-section {
-  min-height: 70vh;
-  padding: 16vh var(--container-padding);
+  min-height: 62vh;
+  padding: 15vh var(--container-padding);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2190,30 +2190,33 @@
 
 .testimonial-card {
   position: relative;
-  width: min(900px, 100%);
-  padding: 5rem 6vw;
-  border: 1px solid rgba(32, 30, 31, .2);
-  background: rgba(255, 255, 255, .38);
-  box-shadow: 25px 25px 0 rgba(212, 175, 55, .2);
+  width: min(1060px, 100%);
+  padding: 2rem 0 0 4rem;
+  border-left: 2px solid var(--color-accent);
+  background: transparent;
 }
 
 .testimonial-mark {
   position: absolute;
-  top: 1.2rem;
-  left: 1.8rem;
+  top: -0.25rem;
+  left: 1.1rem;
   color: var(--color-accent);
-  font: 6rem/1 var(--font-editorial);
+  font: 3.5rem/1 var(--font-editorial);
 }
 
 .testimonial-quote {
-  margin: 1.8rem 0 3rem;
-  font: italic clamp(1.8rem, 3.4vw, 3.5rem)/1.05 var(--font-editorial);
+  max-width: 900px;
+  margin: 0 0 3.5rem;
+  font: italic clamp(1.65rem, 3vw, 3.1rem)/1.18 var(--font-editorial);
 }
 
 .testimonial-meta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(32, 30, 31, .2);
   color: rgba(32, 30, 31, .55);
   font: .72rem var(--font-heading);
   letter-spacing: .14em;
@@ -2406,12 +2409,12 @@
   }
 
   .testimonial-card {
-    padding: 4rem 1.5rem 2.5rem;
-    box-shadow: 12px 12px 0 rgba(212, 175, 55, .2);
+    padding: 2.8rem 0 0 1.35rem;
   }
 
   .testimonial-meta {
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .standard-copy {
@@ -2666,7 +2669,7 @@
     padding: 8vh 1.5rem;
   }
   .testimonial-card {
-    padding: 3rem 1.2rem 2rem;
+    padding: 2.5rem 0 0 1.1rem;
   }
   .testimonial-quote {
     font-size: clamp(1.4rem, 6vw, 2rem);
