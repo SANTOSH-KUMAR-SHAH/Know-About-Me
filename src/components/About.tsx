@@ -22,6 +22,23 @@ const About: React.FC = () => {
         );
       });
 
+      const mobileReveal = gsap.matchMedia();
+      mobileReveal.add('(max-width: 768px)', () => {
+        gsap.to('.about-mobile-photo-reveal', {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          clipPath: 'inset(0 0 0% 0)',
+          duration: 1.35,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '.about-mobile-photo-reveal',
+            start: 'top 82%',
+            once: true,
+          },
+        });
+      });
+
       // Exit dissolve: fade out photo frame and story column as the last paragraph scrolls up
       gsap.to('.about-photo-frame, .about-story-scroll', {
         opacity: 0,
@@ -36,7 +53,9 @@ const About: React.FC = () => {
         }
       });
     }, sectionRef);
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -69,6 +88,11 @@ const About: React.FC = () => {
         <p className="about-para about-line">
           You know your customers. You know your products. You know what works.
         </p>
+
+        <div className="about-mobile-photo-reveal about-line" aria-hidden="true">
+          <img src={portraitUrl} alt="" className="about-mobile-photo" />
+          <div className="about-mobile-photo-gradient" />
+        </div>
 
         {/* THE BUT — pattern interrupt */}
         <p className="about-accent about-line">BUT</p>
