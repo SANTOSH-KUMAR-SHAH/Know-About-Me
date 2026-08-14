@@ -389,10 +389,10 @@
   .about-mobile-photo-reveal {
     position: relative;
     display: block;
-    height: 44vh;
-    min-height: 290px;
-    max-height: 440px;
-    margin: 1vh calc(var(--container-padding) * -1) 2vh;
+    height: 34vh;
+    min-height: 230px;
+    max-height: 340px;
+    margin: 0.5vh calc(var(--container-padding) * -1) 1vh;
     overflow: hidden;
     opacity: 0;
     transform: translateY(28px) scale(0.98);
@@ -405,14 +405,16 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center 12%;
-    filter: grayscale(0.25) contrast(1.1) brightness(0.86);
+    object-position: center 8%;
+    filter: grayscale(0.3) contrast(1.06) brightness(0.82);
   }
 
   .about-mobile-photo-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 45%, var(--color-black) 100%);
+    background:
+      linear-gradient(to bottom, var(--color-black) 0%, transparent 20%, transparent 58%, var(--color-black) 100%),
+      linear-gradient(to right, var(--color-black) 0%, transparent 12%, transparent 88%, var(--color-black) 100%);
     pointer-events: none;
   }
 }
