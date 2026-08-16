@@ -54,6 +54,7 @@ const Education: React.FC = () => {
         { opacity: 1, y: 0, stagger: 0.14, duration: 0.28, ease: 'power3.out' }
       )
       .to('.edu-business-message', { opacity: 0, y: -18, stagger: 0.08, duration: 0.22, ease: 'power2.in' })
+      .set('.edu-business-message', { visibility: 'hidden' })
       .fromTo('.edu-master-pre, .edu-master-huge',
         { opacity: 0, y: 45 },
         { opacity: 1, y: 0, stagger: 0.12, duration: 0.3, ease: 'expo.out' }

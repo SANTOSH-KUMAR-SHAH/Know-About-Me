@@ -2345,6 +2345,9 @@
 
 .edu-master-pre {
   color: var(--color-gray-dark);
+  position: relative;
+  z-index: 2;
+  background: var(--color-black);
   font: italic clamp(0.9rem, 2.5vw, 1.8rem) var(--font-editorial);
   padding: 0 var(--container-padding);
   display: block;
@@ -2353,6 +2356,9 @@
 .edu-master-huge {
   margin: 1.5rem 0 0;
   color: var(--color-white);
+  position: relative;
+  z-index: 2;
+  background: var(--color-black);
   font: 950 clamp(2.2rem, 9vw, 10rem)/.82 var(--font-heading);
   letter-spacing: -.06em;
   padding: 0 var(--container-padding);
