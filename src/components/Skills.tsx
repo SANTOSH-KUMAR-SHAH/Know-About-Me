@@ -33,6 +33,16 @@ const Skills: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const tracks = Array.from(document.querySelectorAll<HTMLElement>('.marquee-inner'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('is-paused', !entry.isIntersecting));
+    }, { rootMargin: '120px 0px' });
+
+    tracks.forEach((track) => observer.observe(track));
+    return () => observer.disconnect();
+  }, []);
+
   const rows = [
     { label: 'MAKE IT CLEAR', items: ['Product discovery', 'Customer journeys', 'Business problems', 'Brand direction'], reverse: false },
     { label: 'MAKE IT FELT', items: ['Visual identity', 'Storytelling', 'Motion', 'Memorable interfaces'], reverse: true },

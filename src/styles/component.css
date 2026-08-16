@@ -1122,6 +1122,10 @@
   animation: marqueeReverse 28s linear infinite;
 }
 
+.marquee-inner.is-paused {
+  animation-play-state: paused;
+}
+
 @keyframes marqueeForward {
   from {
     transform: translateX(0);
@@ -2568,6 +2572,13 @@
   }
   a, button {
     cursor: auto;
+  }
+
+  /* Blur requires a costly repaint while the mobile layout is scrolling. */
+  .work-floating-info {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(20, 20, 20, 0.94);
   }
 }
 

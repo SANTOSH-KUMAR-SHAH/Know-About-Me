@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { CONTENT } from '../utils/constants';
 
-// Importing heavy assets to preload them into browser cache
+// Only preload the first-screen media. Work videos are loaded near their section.
 import webVid from '../assets/web.mp4';
-import workVid from '../assets/work.mp4';
 import portraitUrl from '../assets/portrait.jpg';
 
 interface PreloaderProps {
@@ -82,7 +81,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onStartExit, onComplete }) => {
     }
 
     // Condition 2: Preload media assets
-    const mediaSources = [webVid, workVid, portraitUrl];
+    const mediaSources = [webVid, portraitUrl];
     let loadedCount = 0;
 
     const checkMedia = () => {
@@ -98,8 +97,8 @@ const Preloader: React.FC<PreloaderProps> = ({ onStartExit, onComplete }) => {
       if (src.endsWith('.mp4')) {
         const vid = document.createElement('video');
         vid.src = src;
-        vid.preload = 'auto';
-        vid.oncanplaythrough = checkMedia;
+        vid.preload = 'metadata';
+        vid.onloadeddata = checkMedia;
         vid.onerror = checkMedia;
         vid.load();
       } else {

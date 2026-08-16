@@ -113,7 +113,7 @@ const WorkItem: React.FC<CaseItemProps> = ({
         {/* Visual Container */}
         <div ref={visualRef} className={`work-massive-visual ${isMobileRatio ? 'work-mobile-ratio' : ''} ${isSquareRatio ? 'work-square-ratio' : ''}`}>
           {isVideo && videoSrc ? (
-            <video ref={videoRef} loop muted playsInline className="work-video" preload="metadata">
+            <video ref={videoRef} loop muted playsInline className="work-video" preload="none">
               <source src={videoSrc} type="video/mp4" />
             </video>
           ) : isImage && imageSrc ? (

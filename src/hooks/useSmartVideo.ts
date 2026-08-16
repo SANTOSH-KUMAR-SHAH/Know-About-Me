@@ -14,11 +14,17 @@ export const useSmartVideo = <T extends HTMLVideoElement>() => {
 
     // Force pause initially to prevent background decoding
     video.pause();
+    let hasLoaded = false;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            if (!hasLoaded) {
+              hasLoaded = true;
+              video.preload = 'metadata';
+              video.load();
+            }
             video.play().catch(() => {
               // Autoplay error suppression (e.g. low power mode)
             });

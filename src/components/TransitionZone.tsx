@@ -80,6 +80,7 @@ const TransitionZone: React.FC = () => {
     const canvas = canvasRef.current;
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
 
     // We match the background black exactly so it blends seamlessly
@@ -103,17 +104,28 @@ const TransitionZone: React.FC = () => {
 
     const resize = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouchDevice ? 1.25 : 2));
       material.uniforms.uResolution.value.set(window.innerWidth, window.innerHeight);
     };
     resize();
     window.addEventListener('resize', resize);
 
-    // Render loop
+    // Keep the GPU idle until this pinned transition is actually on screen.
+    let isRendering = false;
     const animate = () => {
-      renderer.render(scene, camera);
+      if (isRendering) renderer.render(scene, camera);
     };
-    gsap.ticker.add(animate);
+    const startRendering = () => {
+      if (isRendering) return;
+      isRendering = true;
+      gsap.ticker.add(animate);
+    };
+    const stopRendering = () => {
+      if (!isRendering) return;
+      isRendering = false;
+      gsap.ticker.remove(animate);
+    };
+    renderer.render(scene, camera);
 
     // 2. Setup GSAP ScrollTrigger Sequence
     const ctx = gsap.context(() => {
@@ -124,7 +136,11 @@ const TransitionZone: React.FC = () => {
           start: "top top",
           end: "+=350%",
           scrub: 0.8,
-          pin: true
+          pin: true,
+          onEnter: startRendering,
+          onEnterBack: startRendering,
+          onLeave: stopRendering,
+          onLeaveBack: stopRendering,
         }
       });
 
@@ -222,7 +238,7 @@ const TransitionZone: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resize);
-      gsap.ticker.remove(animate);
+      stopRendering();
       ctx.revert();
       renderer.dispose();
       geometry.dispose();
