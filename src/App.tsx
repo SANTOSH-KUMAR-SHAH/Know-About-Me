@@ -9,6 +9,7 @@ import TransitionZone from './components/TransitionZone';
 import Work from './components/Work';
 import Skills from './components/Skills';
 import Education from './components/Education';
+import FearlessContact from './components/FearlessContact';
 import Process from './components/Process';
 import Testimonial from './components/Testimonial';
 import SEOContent from './components/SEOContent';
@@ -66,6 +67,7 @@ function App() {
           <Work />
           <Testimonial />
           <Education />
+          <FearlessContact />
         </div>
 
         {/* Return Transition (White -> Black) */}
