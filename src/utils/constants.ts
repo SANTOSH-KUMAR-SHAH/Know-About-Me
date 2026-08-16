@@ -7,13 +7,10 @@ export const CONTENT = {
   },
   about: {
     story: [
-      "Ready to explore my life?? Hmm... I am a frontend developer who refuses to be boxed into bring on theoritical Knowledge.",
-      "My journey didn't start in a traditional classroom. It started with an obsession for breaking things apart and figuring out how they work.",
-      "I blend hardcore technical architecture with raw human emotion. I write poetry. I study philosophy. I design experiences.",
-      "I don't force solutions. I believe in the flow — अनुगच्छतु प्रवाहं. When you align your mind with the problem, the code writes itself.",
-      "I don't just talk. I have rebuilt my entire college's digital infrastructure from the ground up.",
-      "I was just 17 When i made it.",
-      "(Just keep scrolling. You'll see it in a second.)",
+      "I work with founders, startups, and local brands that need a clearer digital presence.",
+      "The work begins by understanding the business, the people it serves, and the problem that needs solving.",
+      "From there, I shape the right combination of strategy, design, brand direction, and frontend engineering.",
+      "The result should be simple to understand, easy to trust, and built to move the business forward.",
       "I make complex things simple. That's not a skill. That's who I am."
     ]
   },
@@ -21,18 +18,6 @@ export const CONTENT = {
     core: ['React', 'Clean Code', 'Tailwind CSS', 'Modern Web', 'Visuals'],
     tools: ['Speed', 'Mobile Design', 'Fixing Bugs', 'Design Tools'],
     learning: ['Animation', 'Big Ideas', 'Better UX', 'Simple_Fast_Fun_']
-  },
-  education: {
-    story: [
-      "Formally, I studied till Class 12. That's where the textbooks end.",
-      "I was never the smartest in the room. Never topped an exam. Never wanted to.",
-      "Theory bored me. But the moment I touched code — I couldn't stop.",
-      "While others memorized formulas, I was studying how systems work. Reading about hardware. Writing poetry. Exploring philosophy. Building things that actually mattered.",
-      "I'm not the jack of all trades.",
-      "I'm the master of some trades.",
-      "While everyone else is still sitting in classrooms, learning the theory of how to build things — I've already built them. They're preparing for the ability. I already have it.",
-      "School taught me one thing: the real education happens when you close the textbook."
-    ]
   },
   socials: [
     { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61585666994832' },
