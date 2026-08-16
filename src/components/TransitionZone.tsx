@@ -80,7 +80,6 @@ const TransitionZone: React.FC = () => {
     const canvas = canvasRef.current;
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
 
     // We match the background black exactly so it blends seamlessly
@@ -104,39 +103,16 @@ const TransitionZone: React.FC = () => {
 
     const resize = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouchDevice ? 1.25 : 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       material.uniforms.uResolution.value.set(window.innerWidth, window.innerHeight);
     };
     resize();
     window.addEventListener('resize', resize);
 
-    // Keep the GPU idle until this pinned transition is actually on screen.
-    let isRendering = false;
     const animate = () => {
-      if (isRendering) renderer.render(scene, camera);
+      renderer.render(scene, camera);
     };
-    const startRendering = () => {
-      if (isRendering) return;
-      isRendering = true;
-      gsap.ticker.add(animate);
-    };
-    const stopRendering = () => {
-      if (!isRendering) return;
-      isRendering = false;
-      gsap.ticker.remove(animate);
-    };
-    renderer.render(scene, camera);
-
-    // Wake the renderer before the pinned section reaches the viewport. This
-    // prevents a blank lead-in on touch devices after the GPU-saving change.
-    const viewportObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) startRendering();
-        else stopRendering();
-      },
-      { rootMargin: '100% 0px' }
-    );
-    viewportObserver.observe(containerRef.current);
+    gsap.ticker.add(animate);
 
     // 2. Setup GSAP ScrollTrigger Sequence
     const ctx = gsap.context(() => {
@@ -148,10 +124,6 @@ const TransitionZone: React.FC = () => {
           end: "+=350%",
           scrub: 0.8,
           pin: true,
-          onEnter: startRendering,
-          onEnterBack: startRendering,
-          onLeave: stopRendering,
-          onLeaveBack: stopRendering,
         }
       });
 
@@ -249,8 +221,7 @@ const TransitionZone: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resize);
-      viewportObserver.disconnect();
-      stopRendering();
+      gsap.ticker.remove(animate);
       ctx.revert();
       renderer.dispose();
       geometry.dispose();
