@@ -55,9 +55,13 @@ const Education: React.FC = () => {
       )
       .to('.edu-business-message', { opacity: 0, y: -18, stagger: 0.08, duration: 0.22, ease: 'power2.in' })
       .set('.edu-business-message', { visibility: 'hidden' })
-      .fromTo('.edu-master-pre, .edu-master-huge',
-        { opacity: 0, y: 45 },
-        { opacity: 1, y: 0, stagger: 0.12, duration: 0.3, ease: 'expo.out' }
+      .fromTo('.edu-master-pre',
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 0.22, ease: 'power3.out' }
+      )
+      .fromTo('.edu-master-huge',
+        { opacity: 1, x: -55, clipPath: 'inset(0 100% 0 0)' },
+        { x: 0, clipPath: 'inset(0 0% 0 0)', duration: 0.72, ease: 'expo.inOut' }
       )
       // Hold fully visible — user reads the title
       .to({}, { duration: 0.6 });

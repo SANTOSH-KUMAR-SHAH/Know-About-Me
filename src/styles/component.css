@@ -2359,11 +2359,12 @@
   position: relative;
   z-index: 2;
   background: var(--color-black);
-  font: 950 clamp(2.2rem, 9vw, 10rem)/.82 var(--font-heading);
-  letter-spacing: -.06em;
+  font: 950 clamp(3rem, 10vw, 11rem)/.8 var(--font-heading);
+  letter-spacing: -.075em;
   padding: 0 var(--container-padding);
   word-break: break-word;
   overflow-wrap: break-word;
+  will-change: clip-path, transform;
 }
 
 .contact-response {
@@ -2768,9 +2769,9 @@
     line-height: 1.3;
   }
   .edu-master-huge {
-    font-size: clamp(1.3rem, 8vw, 2.4rem);
-    letter-spacing: -0.02em;
-    line-height: 0.95;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    letter-spacing: -0.06em;
+    line-height: 0.82;
     padding: 0;
     word-break: keep-all;
     overflow-wrap: normal;
