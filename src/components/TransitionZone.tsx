@@ -127,6 +127,17 @@ const TransitionZone: React.FC = () => {
     };
     renderer.render(scene, camera);
 
+    // Wake the renderer before the pinned section reaches the viewport. This
+    // prevents a blank lead-in on touch devices after the GPU-saving change.
+    const viewportObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startRendering();
+        else stopRendering();
+      },
+      { rootMargin: '100% 0px' }
+    );
+    viewportObserver.observe(containerRef.current);
+
     // 2. Setup GSAP ScrollTrigger Sequence
     const ctx = gsap.context(() => {
 
@@ -238,6 +249,7 @@ const TransitionZone: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resize);
+      viewportObserver.disconnect();
       stopRendering();
       ctx.revert();
       renderer.dispose();
