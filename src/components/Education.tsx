@@ -49,7 +49,16 @@ const Education: React.FC = () => {
         { clipPath: 'inset(0% 0% 100% 0%)' },
         { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', duration: 0.4 }
       )
-      // Hold fully visible — user reads the text
+      .fromTo('.edu-business-message',
+        { opacity: 0, y: 35 },
+        { opacity: 1, y: 0, stagger: 0.14, duration: 0.28, ease: 'power3.out' }
+      )
+      .to('.edu-business-message', { opacity: 0, y: -18, stagger: 0.08, duration: 0.22, ease: 'power2.in' })
+      .fromTo('.edu-master-pre, .edu-master-huge',
+        { opacity: 0, y: 45 },
+        { opacity: 1, y: 0, stagger: 0.12, duration: 0.3, ease: 'expo.out' }
+      )
+      // Hold fully visible — user reads the title
       .to({}, { duration: 0.6 });
 
     });
@@ -78,6 +87,13 @@ const Education: React.FC = () => {
       <div ref={blackContainerRef} className="edu-black-container">
         <div ref={blackPanelRef} className="edu-black-panel">
           <div className="edu-master-content">
+            <div className="edu-business-message" aria-label="Why a strong digital presence matters">
+              <p>You might not need more customers today.</p>
+              <p>But the new generation doesn't ask neighbors.</p>
+              <p>They search on Google.</p>
+              <p>If they don't find you, they will never know how good you are.</p>
+              <p className="edu-business-message-last">You lose a better customer without even knowing.</p>
+            </div>
             <span className="edu-master-pre">Design, branding, business and human behavior around it.</span>
             <h3 className="edu-master-huge">WEBSITE<br />DEVELOPMENT<br />AT THE CORE</h3>
           </div>
