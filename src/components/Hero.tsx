@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { splitText } from '../utils/splitText';
 import vidPath from '../assets/web.mp4';
+import webPoster from '../assets/web-poster.jpg';
 
 interface HeroProps {
   startAnimation?: boolean;
@@ -58,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({ startAnimation = false }) => {
   return (
     <section className="hero-section">
       <div className="hero-video-wrapper">
-        <video ref={videoRef} className="hero-video" autoPlay loop muted playsInline preload="auto">
+        <video ref={videoRef} className="hero-video" autoPlay loop muted playsInline preload="auto" poster={webPoster}>
           <source src={vidPath} type="video/mp4" />
         </video>
         <div className="hero-video-overlay"></div>

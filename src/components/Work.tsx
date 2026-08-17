@@ -2,8 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import workVid from '../assets/work.mp4';
+import workPoster from '../assets/work-first-frame.png';
 import logoAsset from '../assets/logo.png';
 import motionAsset from '../assets/motion.mp4';
+import motionPoster from '../assets/motion-poster.jpg';
 import { useSmartVideo } from '../hooks/useSmartVideo';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,6 +24,7 @@ interface CaseItemProps {
   teaser?: string;
   isVideo?: boolean;
   videoSrc?: string;
+  posterSrc?: string;
   isImage?: boolean;
   imageSrc?: string;
   isMobileRatio?: boolean;
@@ -40,6 +43,7 @@ const WorkItem: React.FC<CaseItemProps> = ({
   teaser,
   isVideo,
   videoSrc,
+  posterSrc,
   isImage,
   imageSrc,
   isMobileRatio,
@@ -113,8 +117,8 @@ const WorkItem: React.FC<CaseItemProps> = ({
         {/* Visual Container */}
         <div ref={visualRef} className={`work-massive-visual ${isMobileRatio ? 'work-mobile-ratio' : ''} ${isSquareRatio ? 'work-square-ratio' : ''}`}>
           {isVideo && videoSrc ? (
-            <video ref={videoRef} loop muted playsInline className="work-video" preload="metadata">
-              <source src={`${videoSrc}#t=0.001`} type="video/mp4" />
+            <video ref={videoRef} loop muted playsInline className="work-video" preload="metadata" poster={posterSrc}>
+              <source src={videoSrc} type="video/mp4" />
             </video>
           ) : isImage && imageSrc ? (
             <img src={imageSrc} className="work-video work-image-fit" alt="Visual asset" />
@@ -176,6 +180,7 @@ const Work: React.FC = () => {
       result: "Live and active",
       isVideo: true,
       videoSrc: workVid,
+      posterSrc: workPoster,
       isMobileRatio: false,
       linkText: "Live → HAR Online Store",
       linkUrl: "https://haronline.pages.dev",
@@ -192,6 +197,7 @@ const Work: React.FC = () => {
       result: "Ready for launch",
       isVideo: true,
       videoSrc: motionAsset,
+      posterSrc: motionPoster,
       isMobileRatio: true,
     }
   ];
