@@ -16,6 +16,8 @@ export const useSmartVideo = <T extends HTMLVideoElement>() => {
     video.pause();
     let hasLoaded = false;
 
+    let playTimeout: number | undefined;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -25,10 +27,20 @@ export const useSmartVideo = <T extends HTMLVideoElement>() => {
               video.preload = 'metadata';
               video.load();
             }
-            video.play().catch(() => {
-              // Autoplay error suppression (e.g. low power mode)
-            });
+            
+            // Wait 2.5 seconds before playing to show the poster frame
+            playTimeout = window.setTimeout(() => {
+              // Only play if it's still intersecting (hasn't been cleared)
+              video.play().catch(() => {
+                // Autoplay error suppression (e.g. low power mode)
+              });
+            }, 2500);
+            
           } else {
+            // Cancel the scheduled play if they scroll past before 2.5s
+            if (playTimeout !== undefined) {
+              window.clearTimeout(playTimeout);
+            }
             if (!video.paused) {
               video.pause();
             }
